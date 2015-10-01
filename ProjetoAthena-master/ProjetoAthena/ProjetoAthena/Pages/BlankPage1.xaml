@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="ProjetoAthena.Pages.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetoAthena.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" >
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="lista.Width" Value="500" />
+                        <Setter Target="lista.Height" Value="500"/>
+                        <Setter Target="livro1.FontSize" Value="25"/>
+                        <Setter Target="livro2.FontSize" Value="25"/>
+                        <Setter Target="livro3.FontSize" Value="25"/>
+                        <Setter Target="livro4.FontSize" Value="25"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ScrollViewer >
+        <RelativePanel ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="Athena"  HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Athena Renewer" FontSize="40"  VerticalAlignment="Top" Width="Auto" RelativePanel.RightOf="logolivro" RelativePanel.AlignTopWithPanel="True" Margin="40,5,0,0" />
+            <Image x:Name="logolivro" Visibility="Visible" Source="/Resources/Images/livros.jpg" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="60" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="20,5,0,0"/>
+            <ScrollViewer x:Name="barralivros" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Below="Athena" Margin="0,50,0,0">
+                <Grid x:Name="lista" Height="300" Width="300" ScrollViewer.VerticalScrollBarVisibility ="Auto"  Margin="0,0,17,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <RelativePanel Grid.Row="0" Height="Auto" Width="Auto">
+                        <TextBlock x:Name="livro1" Text="Livro 1 - Alugado Unesp Blabla" TextWrapping="Wrap" Height="Auto" FontSize="18" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                        <TextBlock x:Name="datadev1" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                        <TextBlock x:Name="temporest1" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                    </RelativePanel>
+                    <RelativePanel Grid.Row="1" Height="Auto" Width="Auto">
+                        <TextBlock x:Name="livro2" Text="Livro 2 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                        <TextBlock x:Name="datadev2" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                        <TextBlock x:Name="temporest2" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                    </RelativePanel>
+                    <RelativePanel Grid.Row="2" Height="Auto" Width="Auto">
+                        <TextBlock x:Name="livro3" Text="Livro 3 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="2" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                        <TextBlock x:Name="datadev3" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                        <TextBlock x:Name="temporest3" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                    </RelativePanel>
+                    <RelativePanel Grid.Row="3" Height="Auto" Width="Auto">
+                        <TextBlock x:Name="livro4" Text="Livro 4 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="3" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                        <TextBlock x:Name="datadev4" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                        <TextBlock x:Name="temporest4" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                    </RelativePanel>
+                </Grid>
+            </ScrollViewer>
+            <Button x:Name="voltar" Content="Voltar" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignLeftWith="barralivros" RelativePanel.Below="barralivros" Click="voltar_Click"/>
+        </RelativePanel>
+        </ScrollViewer>    
+    </Grid>
+
+</Page>
