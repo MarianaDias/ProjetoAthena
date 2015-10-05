@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="ProjetoAthena.Pages.Page_Sobre"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetoAthena.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="textosobre.Width" Value="500"/>
+                        <Setter Target="textosobre.FontSize" Value="17"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ScrollViewer>
+            <RelativePanel ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="sobre" Text="Sobre" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap"  VerticalAlignment="Top" Width="Auto" FontSize="40" RelativePanel.RightOf="logolivro" Margin="40,5,0,0"/>
+                <Image x:Name="logolivro" Height="60" Width="60" Source="/Resources/Images/livros.jpg" Margin="20,5,0,0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
+                <ScrollViewer  x:Name="barra" RelativePanel.Below="sobre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,20,0,0">
+                    <TextBlock ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="textosobre" HorizontalAlignment="Left" Height="400" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" SelectionChanged="textosobre_SelectionChanged" FontSize="15" Margin="0,0,15,0">
+            	<Span>
+            		<Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mauris sapien, rhoncus at vestibulum eu, finibus id massa. Nulla lobortis et tellus eu egestas. Nam in maximus nunc, at convallis ipsum. Ut ac dui tortor. Sed est lorem, laoreet nec diam id, convallis pulvinar tortor. Vivamus non vehicula lectus. Donec sollicitudin lacinia ante at aliquam. Mauris vulputate ligula orci. Nam aliquam neque sem, ac luctus nibh scelerisque tempor. Maecenas ornare erat quis lacus ultricies, id condimentum quam fringilla. Aenean suscipit placerat dictum. Duis vitae gravida est. Fusce fringilla lorem non laoreet hendrerit. Proin non arcu blandit, accumsan turpis quis, aliquet quam. "/>
+            	</Span>
+            	<LineBreak/>
+            	<Span>
+            		<Run Text="Sed libero velit, facilisis eu interdum vitae, tincidunt a ante. Fusce libero massa, dapibus quis eros id, vehicula luctus mauris. Suspendisse tempus enim felis, gravida accumsan risus condimentum nec. Sed lacinia purus et pretium interdum. Phasellus interdum gravida mattis. Donec condimentum quam at urna rutrum dignissim. Vivamus semper sed arcu nec interdum. Cras bibendum arcu eu faucibus lacinia. Ut congue faucibus sapien, eget elementum ligula lobortis malesuada. Sed vel ipsum erat. Etiam urna ligula, porta ac congue ut, pharetra eu lacus. Nunc maximus est quis lobortis dignissim."/>
+            	</Span>
+            	<LineBreak/>
+            	<Run Text=""/>
+                    </TextBlock>
+                </ScrollViewer>
+                <Button x:Name="voltar" Content="Voltar" Margin ="0,20,0,0" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" FontSize="20" RelativePanel.Below= "barra" RelativePanel.AlignLeftWith="barra" Click="voltar_Click"/>
+            </RelativePanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
