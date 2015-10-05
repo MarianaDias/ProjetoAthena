@@ -23,7 +23,7 @@ namespace ProjetoAthena
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
-    {
+    {        
         AthenaData Data = new AthenaData();        
         public MainPage()
         {
@@ -32,15 +32,15 @@ namespace ProjetoAthena
 
         private void renovar_Click(object sender, RoutedEventArgs e)
         {
-            Data.Usuario = CPF.Text;
-            Data.Senha = Senha.Password;
             Data.LogarUsuario(Loga);
+            CPF.Text = Data.Resposta();
         }
 
         void Loga(IAsyncResult resultado)
-        {
+        {            
             if (!Data.Erro)
             {
+                CPF.Text = "Entrei no if loga";
                 var ignored = CoreWindow.GetForCurrentThread().Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros)); });                
             }            
         }

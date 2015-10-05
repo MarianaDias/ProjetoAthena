@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Windows.UI.Popups;
 using Windows.UI.Core;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 namespace ProjetoAthena
 {
@@ -102,33 +109,41 @@ namespace ProjetoAthena
             {
                 erro = value;
             }
-        }
-        private DateTime horaLogin = DateTime.Now;
+        }        
         private AsyncCallback callbackLogin;
         private WebRequest webRequest;
         #endregion
         #region logar usuario
-
-        public  void LogarUsuario(AsyncCallback callback)
+        private string resposta = "NADA";
+        public string Resposta()
         {
+            return resposta;
+        }
+
+        public void LogarUsuario(AsyncCallback callback)
+        {
+            usuario = "44270814870";
+            senha = "2408";
             try
             {
-                if (((DateTime.Now.Minute - horaLogin.Minute) < 15) && !dadosIncorretos)
+                /*if (dadosIncorretos)
                 {
+                    var dialog = new MessageDialog("logar usuario 15 MINUTOS!");
+                    await dialog.ShowAsync();
                     callback(null);
                 }
                 else
-                {
+                {*/
                     callbackLogin = callback;
                     webRequest = WebRequest.Create(SiteAthena);
-                    webRequest.Headers["Connection"] = "Keep-Alive";
+                    webRequest.Headers["Connection"] = "Keep-Alive";                
                     webRequest.BeginGetResponse(LogarUsuarioCallback, webRequest);
-                }
+                //
             }
             catch (Exception e)
-            {                
-                callback(null);
-                erro = true;
+            {
+                erro = true;                
+                callback(null);                
             }
         }
 
@@ -151,23 +166,22 @@ namespace ProjetoAthena
                     {
                         tokenLogin = link.Attributes["action"].Value;
                         tokenLogin = tokenLogin.Remove(0, tokenLogin.IndexOf("/F/") + 3);
-                        Token = tokenLogin;
-
+                        Token = tokenLogin;                        
                         webRequest = WebRequest.Create(SiteAthenaLogin);
                         webRequest.Headers["Connection"] = "Keep-Alive";
-                        webRequest.BeginGetResponse(LoginExecutadoCallback,webRequest);
+                        webRequest.BeginGetResponse(LoginExecutadoCallback, webRequest);                        
                     }
                 }
                 else
-                {                    
-                    callbackLogin(null);
-                    erro = true;
+                {
+                    erro = true;                    
+                    callbackLogin(null);                    
                 }
             }
             catch (Exception e)
             {
-                callbackLogin(null);
                 erro = true;                
+                callbackLogin(null);                
             }
         }
 
@@ -177,31 +191,34 @@ namespace ProjetoAthena
             {
                 webRequest = resultado.AsyncState as WebRequest;
                 if (webRequest != null)
-                {
+                {                    
                     WebResponse response = (WebResponse)webRequest.EndGetResponse(resultado);
                     Stream responseStream = response.GetResponseStream();
                     StreamReader responseStreamReader = new StreamReader(responseStream);
                     string responseString = responseStreamReader.ReadToEnd();
                     if (responseString.Contains("<!-- filename: login-session-uep01 -->"))
                     {
-                        erro = true;
-                        dadosIncorretos = true;
+                        erro = true;                        
+                        dadosIncorretos = true;                        
                         callbackLogin(null);
                     }
                     else
                     {
                         erro = false;
                         dadosIncorretos = false;
-                        usuariologado = true;
-                        horaLogin = DateTime.Now;
-                        callbackLogin(resultado);
+                        callbackLogin(resultado);                        
                     }
+                }
+                else
+                {
+                    erro = true;                    
+                    callbackLogin(null);
                 }
             }
             catch (Exception e)
-            {
-                erro = true;
-                callbackLogin(null);
+            {                
+                erro = true;               
+                callbackLogin(null);                
             }
         }
 

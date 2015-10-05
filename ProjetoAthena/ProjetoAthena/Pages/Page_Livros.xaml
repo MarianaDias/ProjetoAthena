@@ -60,6 +60,7 @@
                     </Grid>
                 </ScrollViewer>
                 <Button x:Name="voltar" Content="Voltar" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignLeftWith="barralivros" RelativePanel.Below="barralivros" Click="voltar_Click"/>
+                <TextBlock x:Name="teste" Text="Aguardando..." RelativePanel.AlignRightWithPanel="True"/>
             </RelativePanel>
         </ScrollViewer>
     </Grid>
