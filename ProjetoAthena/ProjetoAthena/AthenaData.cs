@@ -23,6 +23,7 @@ namespace ProjetoAthena
         #region variaveis
         private string siteAthenaBase = "https://www.athena.biblioteca.unesp.br/F/";
         private string siteAthena = "http://www.athena.biblioteca.unesp.br/F/?func=BOR-INFO";
+        private string siteAthenaLivros = "http://www.athena.biblioteca.unesp.br/F/ID_TOKEN?func=bor-loan&adm_library=UEP50";
         public string SiteAthena
         {
             get
@@ -109,8 +110,17 @@ namespace ProjetoAthena
             {
                 erro = value;
             }
-        }        
-        private AsyncCallback callbackLogin;
+        }
+
+        public string SiteAthenaLivros
+        {
+            get
+            {
+                return siteAthenaLivros.Replace("ID_TOKEN",Token);
+            }            
+        }
+
+        private AsyncCallback callbackLogin,callbackLivros;
         private WebRequest webRequest;
         #endregion
         #region logar usuario
@@ -221,6 +231,28 @@ namespace ProjetoAthena
             }
         }
 
+        #endregion
+        #region livros
+
+        public void RetornarLivros(AsyncCallback callback)
+        {
+            callbackLivros = callback;
+            LogarUsuario(RetornarLivrosLoginCallback);
+        }
+
+        private void RetornarLivrosLoginCallback(IAsyncResult resultado)
+        {
+            if (!erro)
+            {
+                webRequest = (WebRequest)WebRequest.Create(SiteAthenaLivros);
+                webRequest.Headers["Connection"] = "Keep-Alive";
+                webRequest.BeginGetResponse(RetornarLivrosCarregarCallback,webRequest);
+            }
+            else
+            {
+                callbackLivros(null);
+            }
+        }
         #endregion
     }
 }
