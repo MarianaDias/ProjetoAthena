@@ -122,8 +122,7 @@ namespace ProjetoAthena
 
         public void LogarUsuario(AsyncCallback callback)
         {
-            usuario = "44270814870";
-            senha = "2408";
+           
             try
             {
                 /*if (dadosIncorretos)
@@ -138,7 +137,7 @@ namespace ProjetoAthena
                     webRequest = WebRequest.Create(SiteAthena);
                     webRequest.Headers["Connection"] = "Keep-Alive";                
                     webRequest.BeginGetResponse(LogarUsuarioCallback, webRequest);
-                //
+                
             }
             catch (Exception e)
             {

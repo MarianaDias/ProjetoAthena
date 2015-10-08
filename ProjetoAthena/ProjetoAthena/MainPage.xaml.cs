@@ -33,15 +33,14 @@ namespace ProjetoAthena
         private void renovar_Click(object sender, RoutedEventArgs e)
         {
             Data.LogarUsuario(Loga);
-            CPF.Text = Data.Resposta();
+            Data.Usuario = CPF.Text;
+            Data.Senha = Senha.Password;         
         }
 
         void Loga(IAsyncResult resultado)
         {            
             if (!Data.Erro)
             {
-                
-                //CPF.Text = "Entrei no if loga";
                 var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros)); });                
             }            
         }

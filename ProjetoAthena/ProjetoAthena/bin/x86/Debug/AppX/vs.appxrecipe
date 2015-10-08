@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-10-08T17:34:23.888</Modified>
+      <Modified>2015-10-08T20:44:11.097</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +70,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\entrypoint\ProjetoAthena.exe">
       <PackagePath>entrypoint\ProjetoAthena.exe</PackagePath>
-      <Modified>2015-10-08T17:34:12.064</Modified>
+      <Modified>2015-10-08T20:44:10.488</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
@@ -102,7 +102,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.exe">
       <PackagePath>ProjetoAthena.exe</PackagePath>
-      <Modified>2015-10-08T17:34:23.884</Modified>
+      <Modified>2015-10-08T20:44:11.097</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.xr.xml">
       <PackagePath>ProjetoAthena.xr.xml</PackagePath>
@@ -114,7 +114,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-10-08T17:34:17.739</Modified>
+      <Modified>2015-10-08T20:38:11.992</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Resources\Images\livros.jpg">
       <PackagePath>Resources\Images\livros.jpg</PackagePath>
