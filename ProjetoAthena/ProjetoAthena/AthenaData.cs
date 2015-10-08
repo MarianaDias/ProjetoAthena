@@ -24,6 +24,7 @@ namespace ProjetoAthena
         private string siteAthenaBase = "https://www.athena.biblioteca.unesp.br/F/";
         private string siteAthena = "http://www.athena.biblioteca.unesp.br/F/?func=BOR-INFO";
         private string siteAthenaLivros = "http://www.athena.biblioteca.unesp.br/F/ID_TOKEN?func=bor-loan&adm_library=UEP50";
+        private DadosBrutos dados = new DadosBrutos();
         public string SiteAthena
         {
             get
@@ -120,10 +121,42 @@ namespace ProjetoAthena
             }            
         }
 
+        
+
         private AsyncCallback callbackLogin,callbackLivros;
         private WebRequest webRequest;
+        private CoreDispatcher activeDispatcher;
+
+        public CoreDispatcher ActiveDispatcher
+        {
+            get
+            {
+                return activeDispatcher;
+            }
+
+            set
+            {
+                activeDispatcher = value;
+            }
+        }
+
+        internal DadosBrutos Dados
+        {
+            get
+            {
+                return dados;
+            }
+
+            set
+            {
+                dados = value;
+            }
+        }
+
         #endregion
+
         #region logar usuario
+
         private string resposta = "NADA";
         public string Resposta()
         {
@@ -201,7 +234,7 @@ namespace ProjetoAthena
                 webRequest = resultado.AsyncState as WebRequest;
                 if (webRequest != null)
                 {                    
-                    WebResponse response = (WebResponse)webRequest.EndGetResponse(resultado);
+                    WebResponse response = webRequest.EndGetResponse(resultado);
                     Stream responseStream = response.GetResponseStream();
                     StreamReader responseStreamReader = new StreamReader(responseStream);
                     string responseString = responseStreamReader.ReadToEnd();
@@ -232,7 +265,7 @@ namespace ProjetoAthena
         }
 
         #endregion
-        #region livros
+        #region carregar_livros
 
         public void RetornarLivros(AsyncCallback callback)
         {
@@ -251,6 +284,57 @@ namespace ProjetoAthena
             else
             {
                 callbackLivros(null);
+            }
+        }
+
+        private async void RetornarLivrosCarregarCallback(IAsyncResult resultado)
+        {
+            string[] titulos = new string[4];
+            webRequest = resultado.AsyncState as WebRequest;
+            if (webRequest != null)
+            {
+                WebResponse response = webRequest.EndGetResponse(resultado);
+                Stream streamResponse = response.GetResponseStream();
+                StreamReader streamReader = new StreamReader(streamResponse);
+                string responseString = streamReader.ReadToEnd();
+
+                if (!responseString.Contains("<!-- filename: bor-loan-no-loan-->"))
+                {
+                    //activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, );                    
+                    HtmlDocument doc = new HtmlDocument();
+                    doc.LoadHtml(responseString);
+                    HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[5];
+                    int idCount = 0;
+                    int count = 0, cont = 0;
+                    
+                    foreach (HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
+                    {
+                        if (count == 0)
+                        {
+                            count++;
+                            continue;
+                        }
+                        else
+                        {
+                            await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                Dados.Id = idCount++.ToString();
+                                titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, cont);
+                                Dados.StringDevolucao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[5].InnerText.Substring(0, 8);
+                            });
+                        }
+                    }
+                    await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { callbackLivros(resultado); });
+                }
+                else
+                {
+                    callbackLivros(resultado);
+                }
+            }
+            else
+            {
+                erro = true;
+                callbackLogin(null);
             }
         }
         #endregion

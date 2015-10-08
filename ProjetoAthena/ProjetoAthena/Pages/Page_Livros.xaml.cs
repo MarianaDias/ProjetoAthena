@@ -21,14 +21,41 @@ namespace ProjetoAthena.Pages
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class Page_Livros : Page
-    {
+    {        
+        
         public Page_Livros()
         {
             this.InitializeComponent();
+            Limpar();
+            
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var parametro = e.Parameter as AthenaData;
+            livro1.Text = parametro.Dados.
+        }
+
+
         private void voltar_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
-        }       
+        }
+        public void Limpar()
+        {
+            livro1.Text = "";
+            livro2.Text = "";
+            livro3.Text = "";
+            livro4.Text = "";
+            datadev1.Text = "Data Devolução:";
+            datadev2.Text = "Data Devolução:";
+            datadev3.Text = "Data Devolução:";
+            datadev4.Text = "Data Devolução:";
+            temporest1.Text = "dias restantes";
+            temporest2.Text = "dias restantes";
+            temporest3.Text = "dias restantes";
+            temporest4.Text = "dias restantes";
+        }
     }
 }
