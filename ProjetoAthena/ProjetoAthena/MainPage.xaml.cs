@@ -40,8 +40,9 @@ namespace ProjetoAthena
         {            
             if (!Data.Erro)
             {
-                CPF.Text = "Entrei no if loga";
-                var ignored = CoreWindow.GetForCurrentThread().Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros)); });                
+                
+                //CPF.Text = "Entrei no if loga";
+                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros)); });                
             }            
         }
 
