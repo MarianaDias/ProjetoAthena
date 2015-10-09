@@ -34,7 +34,14 @@ namespace ProjetoAthena.Pages
         {
             base.OnNavigatedTo(e);
             var parametro = e.Parameter as AthenaData;
-            livro1.Text = parametro.Dados.
+            if (parametro.Dados.Titulo[0] != null)            
+                livro1.Text = parametro.Dados.Titulo[0];
+            if (parametro.Dados.Titulo[1] != null)
+                livro2.Text = parametro.Dados.Titulo[1];
+            if (parametro.Dados.Titulo[2] != null)                
+                livro3.Text = parametro.Dados.Titulo[2];
+            if (parametro.Dados.Titulo[3] != null)
+                livro4.Text = parametro.Dados.Titulo[3];
         }
 
 

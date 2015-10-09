@@ -303,7 +303,7 @@ namespace ProjetoAthena
                     //activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, );                    
                     HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(responseString);
-                    HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[5];
+                    HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[4];
                     int idCount = 0;
                     int count = 0, cont = 0;
                     
@@ -316,15 +316,17 @@ namespace ProjetoAthena
                         }
                         else
                         {
-                            await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                            {
+                            //await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            //{
                                 Dados.Id = idCount++.ToString();
                                 titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, cont);
                                 Dados.StringDevolucao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[5].InnerText.Substring(0, 8);
-                            });
+                                cont++;
+                            //});
                         }
                     }
-                    await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { callbackLivros(resultado); });
+                    //await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { 
+                    Dados.Titulo = titulos; callbackLivros(resultado); //});
                 }
                 else
                 {
