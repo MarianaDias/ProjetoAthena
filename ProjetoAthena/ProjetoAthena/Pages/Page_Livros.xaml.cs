@@ -29,6 +29,7 @@ namespace ProjetoAthena.Pages
         private void voltar_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
-        }       
+        }   
+            
     }
 }
