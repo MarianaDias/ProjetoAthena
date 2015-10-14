@@ -8,14 +8,14 @@ namespace ProjetoAthena
 {
     class DadosBrutos
     {
-        private string id;
+        private string[] id;
         private string[] titulo;
-        private string stringDevolucao;
-        private string status;
-        private DateTime dataDevolucao;
-        private bool reservado;
+        private string[] stringDevolucao;
+        private string[] status = new string[4];
+        private DateTime[] dataDevolucao = new DateTime[4];
+        private bool[] reservado;
 
-        public string Id
+        public string[] Id
         {
             get
             {
@@ -47,7 +47,7 @@ namespace ProjetoAthena
             }
         }
 
-        public string StringDevolucao
+        public string[] StringDevolucao
         {
             get
             {
@@ -57,12 +57,24 @@ namespace ProjetoAthena
             set
             {                
                 stringDevolucao = value;
-                dataDevolucao = new DateTime(2000 + Convert.ToInt32(stringDevolucao.Substring(6)), Convert.ToInt32(stringDevolucao.Substring(3, 2)), Convert.ToInt32(stringDevolucao.Substring(0, 2)));
-                CheckStatus();
+                Separa();                
+            }
+        }
+        
+        public void Separa()
+        {            
+            for (int i = 0; i<4;i++)
+            {
+                if (stringDevolucao[i] != null)
+                {
+                    dataDevolucao[i] = new DateTime(2000 + Convert.ToInt32(stringDevolucao[i].Substring(6)), Convert.ToInt32(stringDevolucao[i].Substring(3,2)) , Convert.ToInt32(stringDevolucao[i].Substring(0,2)));
+                    CheckStatus(i);
+                }
             }
         }
 
-        public string Status
+
+        public string[] Status
         {
             get
             {
@@ -78,26 +90,15 @@ namespace ProjetoAthena
             }
         }
 
-        public DateTime DataDevolucao
+        public DateTime[] DataDevolucao
         {
             get
             {
                 return dataDevolucao;
-            }
-
-            set
-            {
-                if (value != dataDevolucao)
-                {
-                    dataDevolucao = value;
-                    stringDevolucao = dataDevolucao.Day.ToString("00") + "/" + dataDevolucao.Month.ToString("00") + "/" + dataDevolucao.Year.ToString("00");
-                    CheckStatus();
-                }
-                dataDevolucao = value;
-            }
+            }            
         }
-
-        public bool Reservado
+        
+        public bool[] Reservado
         {
             get
             {
@@ -109,31 +110,31 @@ namespace ProjetoAthena
                 reservado = value;
             }
         }
-
-        private void CheckStatus()
+        
+        private void CheckStatus(int index)
         {
-            int totalDias = (dataDevolucao - DateTime.Now).Days;
+            int totalDias = (dataDevolucao[index] - DateTime.Now).Days;
             if (totalDias >= 7)
             {
-                Status = "Renovado";
+                Status[index] = "Renovado";
             }
             else if (totalDias < 7 && totalDias > 0)
             {
-                Status = "Devolver em " + totalDias + "dias";
+                Status[index] = "Devolver em " + totalDias + "dias";
             }
             else if (totalDias < 0)
             {
-                Status = "Vencido";
+                Status[index] = "Vencido";
             }
             else if (totalDias == 0)
             {
-                Status = "Devolver hoje";
+                Status[index] = "Devolver hoje";
             }
-            if (Reservado)
+            if (Reservado[index])
             {
-                Status = "Reservado";
+                Status[index] = "Reservado";
             }
         }
-
+        
     }
 }
