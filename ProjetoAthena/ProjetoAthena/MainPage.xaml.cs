@@ -24,7 +24,7 @@ namespace ProjetoAthena
     /// </summary>
     public sealed partial class MainPage : Page
     {        
-        AthenaData Data = new AthenaData();        
+        AthenaData Data = new AthenaData();      
         public MainPage()
         {
             this.InitializeComponent();
@@ -32,7 +32,7 @@ namespace ProjetoAthena
 
         private void renovar_Click(object sender, RoutedEventArgs e)
         {
-            Data.LogarUsuario(Loga);
+            Data.RetornarLivros(Loga);
             Data.Usuario = CPF.Text;
             Data.Senha = Senha.Password;         
         }
@@ -41,7 +41,7 @@ namespace ProjetoAthena
         {            
             if (!Data.Erro)
             {
-                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros)); });                
+                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros),Data); });                
             }            
         }
 
