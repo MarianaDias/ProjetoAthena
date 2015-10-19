@@ -28,13 +28,6 @@ namespace ProjetoAthena
         public MainPage()
         {
             this.InitializeComponent();
-        }        
-
-        private void renovar_Click(object sender, RoutedEventArgs e)
-        {
-            Data.RetornarLivros(Loga);
-            Data.Usuario = CPF.Text;
-            Data.Senha = Senha.Password;         
         }
 
         void Loga(IAsyncResult resultado)
@@ -54,6 +47,13 @@ namespace ProjetoAthena
         {
             CPF.Text = "";
             Senha.Password = "";
+        }
+
+        private void logar_Click(object sender, RoutedEventArgs e)
+        {
+            Data.RetornarLivros(Loga);
+            Data.Usuario = CPF.Text;
+            Data.Senha = Senha.Password;
         }
     }
 }

@@ -317,7 +317,8 @@ namespace ProjetoAthena
                     HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[4];
                     int idCount = 0;
                     int count = 0, cont = 0;
-                    
+                    string[] devolucao = new string[4];
+                    string[] ids = new string[4];
                     foreach (HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
                     {
                         if (count == 0)
@@ -327,17 +328,22 @@ namespace ProjetoAthena
                         }
                         else
                         {
-                            //await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                            //{
-                                Dados.Id = idCount++.ToString();
-                                titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, cont);
-                                Dados.StringDevolucao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[5].InnerText.Substring(0, 8);
-                                cont++;
-                            //});
+                            var ignored = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                            {
+                                titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, idCount);
+                                devolucao.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[5].InnerText.Substring(0, 8), idCount);                            
+                                ids.SetValue((idCount + 1).ToString(), idCount);
+                                idCount++;
+                            });
                         }
                     }
-                    //await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { 
-                    Dados.Titulo = titulos; callbackLivros(resultado); //});
+                    var ignored2 =  activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                    { 
+                        dados.Titulo = titulos;
+                        //dados.StringDevolucao = devolucao;
+                        dados.Id = ids;
+                        callbackLivros(resultado);
+                    });
                 }
                 else
                 {
@@ -380,7 +386,7 @@ namespace ProjetoAthena
                 Stream streamResponse = response.GetResponseStream();
                 StreamReader streamReader = new StreamReader(streamResponse);
                 string responseString = streamReader.ReadToEnd();
-                if (responseString.Contains("<!--filename: bor-renew-all-body-->")
+                if (responseString.Contains("<!--filename: bor-renew-all-body-->"))
                 {
                     HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(responseString);
@@ -405,7 +411,7 @@ namespace ProjetoAthena
                                 devolucao.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, idcount);
                                 reservado.SetValue(devolucao.Length > 8,idcount);
                                 titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[1].InnerText,idcount);
-                                ids.SetValue(idcount+1,idcount);
+                                ids.SetValue((idcount+1).ToString(),idcount);
                                 idcount++;
                             });
                         }
@@ -413,7 +419,7 @@ namespace ProjetoAthena
                     var ignored2 = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                     {
                         dados.Titulo = titulos;
-                        dados.StringDevolucao = devolucao;
+                        //dados.StringDevolucao = devolucao;
                         dados.Reservado = reservado;
                         dados.Id = ids;
                         erro = false;

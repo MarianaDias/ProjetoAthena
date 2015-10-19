@@ -47,7 +47,7 @@ namespace ProjetoAthena
             }
         }
 
-        public string[] StringDevolucao
+        /*public string[] StringDevolucao
         {
             get
             {
@@ -64,7 +64,7 @@ namespace ProjetoAthena
                     //CheckStatus();
                 }
             }
-        }
+        }*/
 
         public string Status
         {
