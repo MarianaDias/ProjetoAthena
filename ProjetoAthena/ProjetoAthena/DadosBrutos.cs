@@ -8,14 +8,14 @@ namespace ProjetoAthena
 {
     class DadosBrutos
     {
-        private string id;
+        private string[] id;
         private string[] titulo;
         private string[] stringDevolucao;
         private string status;
-        private DateTime[] dataDevolucao;
-        private bool reservado;
+        //private DateTime[] dataDevolucao;
+        private bool[] reservado;
 
-        public string Id
+        public string[] Id
         {
             get
             {
@@ -82,6 +82,7 @@ namespace ProjetoAthena
             }
         }
 
+        /*
         public DateTime[] DataDevolucao
         {
             get
@@ -103,8 +104,9 @@ namespace ProjetoAthena
                 dataDevolucao = value;
             }
         }
+        */
 
-        public bool Reservado
+        public bool[] Reservado
         {
             get
             {

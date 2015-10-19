@@ -25,6 +25,7 @@ namespace ProjetoAthena
         private string siteAthena = "http://www.athena.biblioteca.unesp.br/F/?func=BOR-INFO";
         private string siteAthenaLivros = "http://www.athena.biblioteca.unesp.br/F/ID_TOKEN?func=bor-loan&adm_library=UEP50";
         private DadosBrutos dados = new DadosBrutos();
+        private CoreDispatcher activeDispatcher;
         public string SiteAthena
         {
             get
@@ -125,21 +126,7 @@ namespace ProjetoAthena
         
 
         private AsyncCallback callbackLogin,callbackLivros, callbackRenovar;
-        private WebRequest webRequest;
-        private CoreDispatcher activeDispatcher;
-
-        public CoreDispatcher ActiveDispatcher
-        {
-            get
-            {
-                return activeDispatcher;
-            }
-
-            set
-            {
-                activeDispatcher = value;
-            }
-        }
+        private WebRequest webRequest;        
 
         internal DadosBrutos Dados
         {
@@ -162,6 +149,19 @@ namespace ProjetoAthena
             }
 
          
+        }
+
+        public CoreDispatcher ActiveDispatcher
+        {
+            get
+            {
+                return activeDispatcher;
+            }
+
+            set
+            {
+                activeDispatcher = value;
+            }
         }
 
         #endregion
@@ -387,6 +387,10 @@ namespace ProjetoAthena
                     List<HtmlNode> node = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList();
                     HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[4];
                     int idcount = 0, count =0;
+                    string[] devolucao = new string[4];
+                    bool[] reservado = new bool[4];
+                    string[] titulos = new string[4];
+                    string[] ids = new string[4];
                     foreach(HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
                     {
                         if (count == 0)
@@ -396,11 +400,36 @@ namespace ProjetoAthena
                         }
                         else
                         {
-                            
+                            var ignored1 =  activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                            {
+                                devolucao.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, idcount);
+                                reservado.SetValue(devolucao.Length > 8,idcount);
+                                titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[1].InnerText,idcount);
+                                ids.SetValue(idcount+1,idcount);
+                                idcount++;
+                            });
                         }
                     }
-
-                } 
+                    var ignored2 = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {
+                        dados.Titulo = titulos;
+                        dados.StringDevolucao = devolucao;
+                        dados.Reservado = reservado;
+                        dados.Id = ids;
+                        erro = false;
+                        callbackRenovar(resultado);
+                    });                    
+                }
+                else
+                {
+                    erro = true;
+                    callbackRenovar(null);
+                }
+            }
+            else
+            {
+                erro = true;
+                callbackLogin(null);
             }
         }
 
