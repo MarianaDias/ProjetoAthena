@@ -37,10 +37,6 @@ namespace ProjetoAthena
             Data.Senha = Senha.Password;         
         }
 
-        void sucesso(IAsyncResult resultado)
-        {
-            
-        }
         void Loga(IAsyncResult resultado)
         {            
             if (!Data.Erro)

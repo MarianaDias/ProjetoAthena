@@ -24,7 +24,6 @@ namespace ProjetoAthena
         private string siteAthenaBase = "https://www.athena.biblioteca.unesp.br/F/";
         private string siteAthena = "http://www.athena.biblioteca.unesp.br/F/?func=BOR-INFO";
         private string siteAthenaLivros = "http://www.athena.biblioteca.unesp.br/F/ID_TOKEN?func=bor-loan&adm_library=UEP50";
-        private string siteAthenaRenovar = "http://www.athena.biblioteca.unesp.br/F/ID_TOKEN?func=bor-renew-all&adm_library=UEP50%22;";
         private DadosBrutos dados = new DadosBrutos();
         public string SiteAthena
         {
@@ -124,7 +123,7 @@ namespace ProjetoAthena
 
         
 
-        private AsyncCallback callbackLogin,callbackLivros,callbackRenovar;
+        private AsyncCallback callbackLogin,callbackLivros;
         private WebRequest webRequest;
         private CoreDispatcher activeDispatcher;
 
@@ -151,14 +150,6 @@ namespace ProjetoAthena
             set
             {
                 dados = value;
-            }
-        }
-
-        public string SiteAthenaRenovar
-        {
-            get
-            {
-                return siteAthenaRenovar.Replace("ID_TOKEN",token);
             }
         }
 
@@ -296,7 +287,7 @@ namespace ProjetoAthena
             }
         }
 
-        private void RetornarLivrosCarregarCallback(IAsyncResult resultado)
+        private async void RetornarLivrosCarregarCallback(IAsyncResult resultado)
         {
             string[] titulos = new string[4];
             webRequest = resultado.AsyncState as WebRequest;
@@ -315,8 +306,7 @@ namespace ProjetoAthena
                     HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[4];
                     int idCount = 0;
                     int count = 0, cont = 0;
-                    string[] id = new string[4];
-                    string[] stringdev = new string[4];
+                    
                     foreach (HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
                     {
                         if (count == 0)
@@ -325,16 +315,18 @@ namespace ProjetoAthena
                             continue;
                         }
                         else
-                        {                            
-                                id.SetValue(idCount++.ToString(),cont);                                
+                        {
+                            //await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            //{
+                                Dados.Id = idCount++.ToString();
                                 titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, cont);
-                                stringdev.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[5].InnerText.Substring(0, 8), cont);                                
-                                cont++;                            
+                                Dados.StringDevolucao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[5].InnerText.Substring(0, 8);
+                                cont++;
+                            //});
                         }
                     }
-                    Dados.Id = id;
-                    Dados.StringDevolucao = stringdev;
-                    Dados.Titulo = titulos; callbackLivros(resultado);
+                    //await activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { 
+                    Dados.Titulo = titulos; callbackLivros(resultado); //});
                 }
                 else
                 {
@@ -347,87 +339,6 @@ namespace ProjetoAthena
                 callbackLogin(null);
             }
         }
-        #endregion
-        #region renovar
-        public void RenovarLivros(AsyncCallback callback)
-        {
-            callbackRenovar = callback;
-            LogarUsuario(RenovarLivrosLoginCallback);
-        }
-
-        public void RenovarLivrosLoginCallback(IAsyncResult resultado)
-        {
-            if (!erro)
-            {
-                webRequest = WebRequest.Create(SiteAthenaRenovar);
-                webRequest.Headers["Connection"] = "Keep-Alive";
-                webRequest.BeginGetResponse(RenovarLivrosCarregarCallback,webRequest);
-            }
-            else
-            {
-                erro = true;
-                callbackLogin(null);
-            }
-        }
-
-        public void RenovarLivrosCarregarCallback(IAsyncResult resultado)
-        {
-            webRequest = resultado.AsyncState as WebRequest;
-            if (webRequest != null)
-            {
-                WebResponse response = (WebResponse)webRequest.EndGetResponse(resultado);
-                Stream streamResponse = response.GetResponseStream();
-                StreamReader streamReader = new StreamReader(streamResponse);
-                string responseString = streamReader.ReadToEnd();                
-                if (responseString.Contains("<!--filename: bor-renew-all-body-->"))
-                {
-                    HtmlDocument doc = new HtmlDocument();
-                    doc.LoadHtml(responseString);
-                    List<HtmlNode> node = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList();
-                    HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[3];
-                    int idCount = 0, count = 0, contStringDevReserv = 0;
-                    string[] stringDev = new string[4];
-                    bool[] reservado = new bool[4];
-                    string[] id = new string[4];
-                    string[] titulos = new string[4];
-                    string[] stringDevolucao = new string[4];
-                    foreach (HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
-                    {
-                        if (count == 0)
-                        {
-                            count++;
-                            continue;
-                        }
-                        else
-                        {
-                            stringDev.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText,contStringDevReserv);                            
-                            reservado.SetValue((stringDev[contStringDevReserv].Length > 8),contStringDevReserv);
-                            id.SetValue(idCount++.ToString(),contStringDevReserv);
-                            titulos.SetValue(tr.ChildNodes.Where(n=>n.Name == "td").ToList()[1].InnerText,contStringDevReserv);
-                            stringDevolucao.SetValue(tr.ChildNodes.Where(n=>n.Name == "td").ToList()[3].InnerText.Substring(0,8),contStringDevReserv);
-                            contStringDevReserv++;
-
-                        }                        
-                    }
-                    dados.Reservado = reservado;
-                    dados.Id = id;
-                    dados.Titulo = titulos;
-                    dados.StringDevolucao = stringDevolucao;
-                    erro = false;
-                }
-                else
-                {
-                    erro = true;
-                    callbackRenovar(resultado);
-                }
-            }
-            else
-            {
-                erro = true;
-                callbackLogin(null);
-            }
-        }
-
         #endregion
     }
 }
