@@ -40,6 +40,7 @@ namespace ProjetoAthena
                 return siteAthenaLogin.Replace("ID_USUARIO", usuario).Replace("ID_SENHA", senha).Replace("ID_TOKEN", token);
             }
         }
+        private string siteAthenaRenovar = "http://www.athena.biblioteca.unesp.br/F/ID_TOKEN?func=bor-renew-all&adm_library=UEP50";
         private string usuario;
         public string Usuario
         {
@@ -123,7 +124,7 @@ namespace ProjetoAthena
 
         
 
-        private AsyncCallback callbackLogin,callbackLivros;
+        private AsyncCallback callbackLogin,callbackLivros, callbackRenovar;
         private WebRequest webRequest;
         private CoreDispatcher activeDispatcher;
 
@@ -151,6 +152,16 @@ namespace ProjetoAthena
             {
                 dados = value;
             }
+        }
+
+        public string SiteAthenaRenovar
+        {
+            get
+            {
+                return siteAthenaRenovar;
+            }
+
+         
         }
 
         #endregion
@@ -287,7 +298,7 @@ namespace ProjetoAthena
             }
         }
 
-        private async void RetornarLivrosCarregarCallback(IAsyncResult resultado)
+        private void RetornarLivrosCarregarCallback(IAsyncResult resultado)
         {
             string[] titulos = new string[4];
             webRequest = resultado.AsyncState as WebRequest;
@@ -339,6 +350,61 @@ namespace ProjetoAthena
                 callbackLogin(null);
             }
         }
+        #endregion
+       #region renovar livros
+        public void RenovarLivros(AsyncCallback callback)
+        {
+            callbackRenovar = callback;
+            LogarUsuario(RenovarLivrosLoginCallback);
+        }
+        public void RenovarLivrosLoginCallback(IAsyncResult resultado)
+        {
+            if (!erro)
+            {
+                webRequest = WebRequest.Create(SiteAthenaRenovar);
+                webRequest.Headers["Connection"] = "Keep-Alive";
+                webRequest.BeginGetResponse(RenovarLivrosCarregarCallback, webRequest);
+            }
+            else
+            {
+                erro = true;
+                callbackLogin(null);
+            }
+        }
+        public void RenovarLivrosCarregarCallback(IAsyncResult resultado)
+        {
+            webRequest = resultado.AsyncState as WebRequest;
+            if(webRequest != null)
+            {
+                WebResponse response = webRequest.EndGetResponse(resultado);
+                Stream streamResponse = response.GetResponseStream();
+                StreamReader streamReader = new StreamReader(streamResponse);
+                string responseString = streamReader.ReadToEnd();
+                if (responseString.Contains("<!--filename: bor-renew-all-body-->")
+                {
+                    HtmlDocument doc = new HtmlDocument();
+                    doc.LoadHtml(responseString);
+                    List<HtmlNode> node = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList();
+                    HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[4];
+                    int idcount = 0, count =0;
+                    foreach(HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
+                    {
+                        if (count == 0)
+                        {
+                            count++;
+                            continue;
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+
+                } 
+            }
+        }
+
+
         #endregion
     }
 }

@@ -10,9 +10,9 @@ namespace ProjetoAthena
     {
         private string id;
         private string[] titulo;
-        private string stringDevolucao;
+        private string[] stringDevolucao;
         private string status;
-        private DateTime dataDevolucao;
+        private DateTime[] dataDevolucao;
         private bool reservado;
 
         public string Id
@@ -47,7 +47,7 @@ namespace ProjetoAthena
             }
         }
 
-        public string StringDevolucao
+        public string[] StringDevolucao
         {
             get
             {
@@ -57,8 +57,12 @@ namespace ProjetoAthena
             set
             {                
                 stringDevolucao = value;
-                dataDevolucao = new DateTime(2000 + Convert.ToInt32(stringDevolucao.Substring(6)), Convert.ToInt32(stringDevolucao.Substring(3, 2)), Convert.ToInt32(stringDevolucao.Substring(0, 2)));
-                CheckStatus();
+                dataDevolucao = new DateTime[4];
+                for (int i = 0; i < 4; i++)
+                {
+                    dataDevolucao[i] = new DateTime(2000 + Convert.ToInt32(stringDevolucao[i].Substring(6)), Convert.ToInt32(stringDevolucao[i].Substring(3, 2)), Convert.ToInt32(stringDevolucao[i].Substring(0, 2)));
+                    //CheckStatus();
+                }
             }
         }
 
@@ -78,7 +82,7 @@ namespace ProjetoAthena
             }
         }
 
-        public DateTime DataDevolucao
+        public DateTime[] DataDevolucao
         {
             get
             {
@@ -90,8 +94,11 @@ namespace ProjetoAthena
                 if (value != dataDevolucao)
                 {
                     dataDevolucao = value;
-                    stringDevolucao = dataDevolucao.Day.ToString("00") + "/" + dataDevolucao.Month.ToString("00") + "/" + dataDevolucao.Year.ToString("00");
-                    CheckStatus();
+                    for (int i=0; i < 4; i++)
+                    {
+                        stringDevolucao[i] = dataDevolucao[i].Day.ToString("00") + "/" + dataDevolucao[i].Month.ToString("00") + "/" + dataDevolucao[i].Year.ToString("00");
+                       // CheckStatus();
+                    }
                 }
                 dataDevolucao = value;
             }
@@ -110,7 +117,7 @@ namespace ProjetoAthena
             }
         }
 
-        private void CheckStatus()
+        /*private void CheckStatus()
         {
             int totalDias = (dataDevolucao - DateTime.Now).Days;
             if (totalDias >= 7)
@@ -133,7 +140,7 @@ namespace ProjetoAthena
             {
                 Status = "Reservado";
             }
-        }
+        }*/
 
     }
 }

@@ -21,8 +21,8 @@ namespace ProjetoAthena.Pages
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class Page_Livros : Page
-    {        
-        
+    {
+        AthenaData dadosLongin;
         public Page_Livros()
         {
             this.InitializeComponent();
@@ -34,6 +34,7 @@ namespace ProjetoAthena.Pages
         {
             base.OnNavigatedTo(e);
             var parametro = e.Parameter as AthenaData;
+            dadosLongin = parametro;
             if (parametro.Dados.Titulo[0] != null)            
                 livro1.Text = parametro.Dados.Titulo[0];
             if (parametro.Dados.Titulo[1] != null)
