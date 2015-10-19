@@ -68,5 +68,9 @@ namespace ProjetoAthena.Pages
             temporest4.Text = "dias restantes";
         }
 
+        private void renovar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
