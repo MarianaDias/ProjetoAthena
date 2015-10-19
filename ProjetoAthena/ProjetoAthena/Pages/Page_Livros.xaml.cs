@@ -48,11 +48,10 @@ namespace ProjetoAthena.Pages
         private void voltar_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
-<<<<<<< HEAD
+
         }   
             
-=======
-        }
+        
         public void Limpar()
         {
             livro1.Text = "";
@@ -68,6 +67,6 @@ namespace ProjetoAthena.Pages
             temporest3.Text = "dias restantes";
             temporest4.Text = "dias restantes";
         }
->>>>>>> origin/master
+
     }
 }
