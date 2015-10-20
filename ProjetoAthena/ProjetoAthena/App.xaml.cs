@@ -30,7 +30,18 @@ namespace ProjetoAthena
     /// </summary>
     public partial class App : Application
     {
-        
+        private static MainViewModel viewModel = null;
+        public static MainViewModel ViewModel
+        {
+            get
+            {
+                if (viewModel == null)
+                {
+                    viewModel = new MainViewModel();
+                }
+                return viewModel;
+            }
+        }
         private static AthenaData dataConexao = null;
         public static AthenaData DataConexao
         {
@@ -97,6 +108,7 @@ namespace ProjetoAthena
             }
         }
 
+
         public static string UsernameID = "Username";
         public static string PasswordID = "Password";
         public static string BooksID = "Books";
@@ -107,7 +119,7 @@ namespace ProjetoAthena
         //Algorithm to provid a key to encryption
         //Use AES, CBC mode with PKCS#7 padding (good default choice)
         private static SymmetricKeyAlgorithmProvider aesCbcPkcs7 = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
-        //Create an AES 128-bit (16 byte) key
+        //Create an AES 128-bit (16 byte) key ----- POSSIVEL ERROOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!        
         static CryptographicKey key = aesCbcPkcs7.CreateSymmetricKey(CryptographicBuffer.GenerateRandom(16));
 
         //Create a 16 byte initialization vector
@@ -223,12 +235,12 @@ namespace ProjetoAthena
             var settings = ApplicationData.Current.LocalSettings;
             if (!settings.Values.ContainsKey(BooksID))
             {
-                settings.Values.Add(BooksID,...);
+                settings.Values.Add(BooksID,App.ViewModel.Items);
 
             }
             else
             {
-                settings.Values[BooksID] = ...;
+                settings.Values[BooksID] = App.ViewModel.Items;
             }
 
         }
@@ -240,7 +252,7 @@ namespace ProjetoAthena
             {
                 settings.Values.Remove(BooksID);
             }
-           ....IsDataLoad = false;
+            viewModel.IsDataLoaded = false;
         }
 
         private static void Logout()
@@ -249,7 +261,7 @@ namespace ProjetoAthena
             DeletedEncryptedText(PasswordID);
             RemoveBooks();
             dataConexao = null;
-            ....Items.Clear();
+            App.ViewModel.Items.Clear();
         }
 
       

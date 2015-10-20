@@ -102,10 +102,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AthenaData.cs" />
-    <Compile Include="DadosBrutos.cs" />
+    <Compile Include="ItemViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="Pages\Page_Livros.xaml.cs">
       <DependentUpon>Page_Livros.xaml</DependentUpon>
     </Compile>

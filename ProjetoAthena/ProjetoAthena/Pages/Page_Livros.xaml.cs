@@ -31,17 +31,7 @@ namespace ProjetoAthena.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            var parametro = e.Parameter as AthenaData;
-            dadosLogin = parametro;
-            if (parametro.Dados.Titulo[0] != null)            
-                livro1.Text = parametro.Dados.Titulo[0];
-            if (parametro.Dados.Titulo[1] != null)
-                livro2.Text = parametro.Dados.Titulo[1];
-            if (parametro.Dados.Titulo[2] != null)                
-                livro3.Text = parametro.Dados.Titulo[2];
-            if (parametro.Dados.Titulo[3] != null)
-                livro4.Text = parametro.Dados.Titulo[3];
+            base.OnNavigatedTo(e);            
         }
 
 

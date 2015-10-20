@@ -31,9 +31,9 @@ namespace ProjetoAthena
 
         void Loga(IAsyncResult resultado)
         {            
-            if (!Data.Erro)
+            if (!App.DataConexao.Erro)
             {
-                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros),Data); });                
+                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros)); });                
             }            
         }
 

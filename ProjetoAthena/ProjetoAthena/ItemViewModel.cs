@@ -1,21 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjetoAthena
 {
-    class DadosBrutos
+    public class ItemViewModel : INotifyPropertyChanged
     {
-        private string[] id;
-        private string[] titulo;
-        private string[] stringDevolucao;
+        private string id;
+        private string titulo;
+        private string stringDevolucao;
         private string status;
-        //private DateTime[] dataDevolucao;
-        private bool[] reservado;
+        private DateTime dataDevolucao;
+        private bool reservado;
 
-        public string[] Id
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if(handler != null)
+            {
+                handler(this,new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public string Id
         {
             get
             {
@@ -27,11 +38,12 @@ namespace ProjetoAthena
                 if (value != id)
                 {
                     id = value;
+                    NotifyPropertyChanged("ID");
                 }                
             }
         }
 
-        public string[] Titulo
+        public string Titulo
         {
             get
             {
@@ -43,11 +55,12 @@ namespace ProjetoAthena
                 if (value != titulo)
                 {
                     titulo = value;
+                    NotifyPropertyChanged("Titulo");
                 }
             }
         }
 
-        /*public string[] StringDevolucao
+        public string StringDevolucao
         {
             get
             {
@@ -56,15 +69,12 @@ namespace ProjetoAthena
 
             set
             {                
-                stringDevolucao = value;
-                dataDevolucao = new DateTime[4];
-                for (int i = 0; i < 4; i++)
-                {
-                    dataDevolucao[i] = new DateTime(2000 + Convert.ToInt32(stringDevolucao[i].Substring(6)), Convert.ToInt32(stringDevolucao[i].Substring(3, 2)), Convert.ToInt32(stringDevolucao[i].Substring(0, 2)));
-                    //CheckStatus();
-                }
+                stringDevolucao = value;                
+                dataDevolucao = new DateTime(2000 + Convert.ToInt32(stringDevolucao.Substring(6)), Convert.ToInt32(stringDevolucao.Substring(3, 2)), Convert.ToInt32(stringDevolucao.Substring(0, 2)));
+                //CheckStatus();
+                NotifyPropertyChanged("StringDevolucao");
             }
-        }*/
+        }
 
         public string Status
         {
@@ -78,12 +88,13 @@ namespace ProjetoAthena
                 if (value != status)
                 {
                     status = value;
+                    NotifyPropertyChanged("Status");
                 }                
             }
         }
 
-        /*
-        public DateTime[] DataDevolucao
+        
+        public DateTime DataDevolucao
         {
             get
             {
@@ -94,19 +105,18 @@ namespace ProjetoAthena
             {
                 if (value != dataDevolucao)
                 {
-                    dataDevolucao = value;
-                    for (int i=0; i < 4; i++)
-                    {
-                        stringDevolucao[i] = dataDevolucao[i].Day.ToString("00") + "/" + dataDevolucao[i].Month.ToString("00") + "/" + dataDevolucao[i].Year.ToString("00");
+                    dataDevolucao = value;                   
+                    stringDevolucao = dataDevolucao.Day.ToString("00") + "/" + dataDevolucao.Month.ToString("00") + "/" + dataDevolucao.Year.ToString("00");
+                    NotifyPropertyChanged("DataDevolucao");
                        // CheckStatus();
-                    }
+                    
                 }
                 dataDevolucao = value;
             }
         }
-        */
+        
 
-        public bool[] Reservado
+        public bool Reservado
         {
             get
             {

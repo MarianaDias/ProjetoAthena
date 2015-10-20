@@ -24,8 +24,8 @@ namespace ProjetoAthena
         private string siteAthenaBase = "https://www.athena.biblioteca.unesp.br/F/";
         private string siteAthena = "http://www.athena.biblioteca.unesp.br/F/?func=BOR-INFO";
         private string siteAthenaLivros = "http://www.athena.biblioteca.unesp.br/F/ID_TOKEN?func=bor-loan&adm_library=UEP50";
-        private DadosBrutos dados = new DadosBrutos();
-        private CoreDispatcher activeDispatcher;
+        private ItemViewModel dados = new ItemViewModel();
+        private CoreDispatcher activeDispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
         public string SiteAthena
         {
             get
@@ -128,7 +128,7 @@ namespace ProjetoAthena
         private AsyncCallback callbackLogin,callbackLivros, callbackRenovar;
         private WebRequest webRequest;        
 
-        internal DadosBrutos Dados
+        internal ItemViewModel Dados
         {
             get
             {
@@ -149,20 +149,7 @@ namespace ProjetoAthena
             }
 
          
-        }
-
-        public CoreDispatcher ActiveDispatcher
-        {
-            get
-            {
-                return activeDispatcher;
-            }
-
-            set
-            {
-                activeDispatcher = value;
-            }
-        }
+        }        
 
         #endregion
 
@@ -311,14 +298,15 @@ namespace ProjetoAthena
 
                 if (!responseString.Contains("<!-- filename: bor-loan-no-loan-->"))
                 {
-                    //activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, );                    
+                    var ignored1 = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                    {
+                        App.ViewModel.Items.Clear();
+                    });
                     HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(responseString);
                     HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[4];
                     int idCount = 0;
-                    int count = 0, cont = 0;
-                    string[] devolucao = new string[4];
-                    string[] ids = new string[4];
+                    int count = 0;                    
                     foreach (HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
                     {
                         if (count == 0)
@@ -328,20 +316,19 @@ namespace ProjetoAthena
                         }
                         else
                         {
-                            var ignored = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                            var ignored2 = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
                             {
-                                titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, idCount);
-                                devolucao.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[5].InnerText.Substring(0, 8), idCount);                            
-                                ids.SetValue((idCount + 1).ToString(), idCount);
-                                idCount++;
+                                App.ViewModel.Items.Add(new ItemViewModel()
+                                {
+                                    Id = idCount++.ToString(),
+                                    Titulo = tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText,
+                                    StringDevolucao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[5].InnerText.Substring(0,8)
+                                });
                             });
                         }
                     }
-                    var ignored2 =  activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
-                    { 
-                        dados.Titulo = titulos;
-                        //dados.StringDevolucao = devolucao;
-                        dados.Id = ids;
+                    var ignored3 =  activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                    {                        
                         callbackLivros(resultado);
                     });
                 }
@@ -388,15 +375,15 @@ namespace ProjetoAthena
                 string responseString = streamReader.ReadToEnd();
                 if (responseString.Contains("<!--filename: bor-renew-all-body-->"))
                 {
+                    var ignored1 = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                    {
+                        App.ViewModel.Items.Clear();
+                    });
                     HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(responseString);
                     List<HtmlNode> node = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList();
                     HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[4];
-                    int idcount = 0, count =0;
-                    string[] devolucao = new string[4];
-                    bool[] reservado = new bool[4];
-                    string[] titulos = new string[4];
-                    string[] ids = new string[4];
+                    int idcount = 0, count =0;                    
                     foreach(HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
                     {
                         if (count == 0)
@@ -406,22 +393,22 @@ namespace ProjetoAthena
                         }
                         else
                         {
-                            var ignored1 =  activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                            var ignored2 =  activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
                             {
-                                devolucao.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText, idcount);
-                                reservado.SetValue(devolucao.Length > 8,idcount);
-                                titulos.SetValue(tr.ChildNodes.Where(n => n.Name == "td").ToList()[1].InnerText,idcount);
-                                ids.SetValue((idcount+1).ToString(),idcount);
-                                idcount++;
+                                string stringDevolucao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText;
+                                bool reservado = stringDevolucao.Length > 8;
+                                App.ViewModel.Items.Add(new ItemViewModel()
+                                {
+                                    Id = idcount++.ToString(),
+                                    Reservado = reservado,
+                                    Titulo = tr.ChildNodes.Where(n => n.Name == "td").ToList()[1].InnerText,
+                                    StringDevolucao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText.Substring(0,8)
+                                });
                             });
                         }
                     }
-                    var ignored2 = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                    {
-                        dados.Titulo = titulos;
-                        //dados.StringDevolucao = devolucao;
-                        dados.Reservado = reservado;
-                        dados.Id = ids;
+                    var ignored3 = activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {                        
                         erro = false;
                         callbackRenovar(resultado);
                     });                    
