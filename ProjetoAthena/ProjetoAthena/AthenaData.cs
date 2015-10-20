@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ProjetoAthena
 {
-    class AthenaData
+    public class AthenaData
     {
         #region variaveis
         private string siteAthenaBase = "https://www.athena.biblioteca.unesp.br/F/";

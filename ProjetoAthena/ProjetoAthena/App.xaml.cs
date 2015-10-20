@@ -14,14 +14,80 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
+using System.Text;
+using Windows.Security.Cryptography.Core;
+using Windows.Storage.Streams;
+using Windows.Security.Cryptography;
+using System.IO.IsolatedStorage;
 
 namespace ProjetoAthena
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    public partial class App : Application
     {
+        
+        private static AthenaData dataConexao = null;
+        public static AthenaData DataConexao
+        {
+            get
+            {
+                if (dataConexao == null)
+                    dataConexao = new AthenaData();
+                return dataConexao;
+            }
+        }
+        private static string usuario = null;
+
+        public static string Usuario
+        {
+            get
+            {
+                if (usuario == null)
+                    usuario = LoadEncryptedText(App.UsernameID);
+                return usuario;
+            }
+            set
+            {
+                usuario = value;
+                SaveEncryptedText(usuario, App.UsernameID);
+            }
+        }
+
+        private static string senha = null;
+
+        public static string Senha
+        {
+            get
+            {
+                if (senha == null)
+                    senha = LoadEncryptedText(App.PasswordID);
+                return senha;
+            }
+            set
+            {
+                senha = value;
+                SaveEncryptedText(senha, App.PasswordID);
+            }
+        }
+
+        public static string UsernameID = "Username";
+        public static string PasswordID = "Password";
+        public static string BooksID = "Books";
+
+        private static string filePath = "EncryptedFile";
+        //Algorithm to provid a key to encryption
+        //Use AES, CBC mode with PKCS#7 padding (good default choice)
+        private static SymmetricKeyAlgorithmProvider aesCbcPkcs7 = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
+        //Create an AES 128-bit (16 byte) key
+        static CryptographicKey key = aesCbcPkcs7.CreateSymmetricKey(CryptographicBuffer.GenerateRandom(16));
+
+        //Create a 16 byte initialization vector
+        static IBuffer iv = CryptographicBuffer.GenerateRandom(aesCbcPkcs7.BlockLength);
+
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -33,6 +99,90 @@ namespace ProjetoAthena
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+        }
+
+        /// <summary>
+        /// Load an encrypted text to the local settings of the application
+        /// </summary>
+        /// <param name="textToEncrypt">Text to be encrypted</param>
+        /// <param name="identifier">String that is used to identifie the text that will be encrypted</param>
+        private static void SaveEncryptedText(string textToEncrypt, string identifier)
+        {
+            
+            var settings = ApplicationData.Current.LocalSettings;
+                  
+            if (!settings.Values.ContainsKey(identifier))
+            {
+                settings.Values.Add(identifier, true);
+            }
+            else
+            {
+                settings.Values[identifier] = true;
+            }
+            
+            //Encrypt the data
+            // Convert the PIN to a byte[].
+            byte[] PinByte = Encoding.UTF8.GetBytes(textToEncrypt);
+            byte[] EncryptedPinByte = CryptographicEngine.Encrypt(key,PinByte.AsBuffer(),iv).ToArray();
+
+            // Create a file in the application's isolated storage.
+            IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
+            IsolatedStorageFileStream writestream = new IsolatedStorageFileStream(filePath + identifier, System.IO.FileMode.Create, System.IO.FileAccess.Write, file);
+
+            // Write pinData to the file.
+            Stream writer = new StreamWriter(writestream).BaseStream;
+            writer.Write(EncryptedPinByte, 0, EncryptedPinByte.Length);            
+        }
+
+        /// <summary>
+        /// Load an encrypted text to the local settings of the application
+        /// </summary>
+        /// <param name="identifier">String that is used to identifie the data that will be loaded</param>
+        /// <returns></returns>
+        private static string LoadEncryptedText(string identifier)
+        {
+            bool saved = false;
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey(identifier))
+            {
+                saved = Convert.ToBoolean(ApplicationData.Current.LocalSettings.Values[identifier]);
+            }
+            string DecryptedPinByte = null;
+
+            IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
+            if (saved && file.FileExists(filePath + identifier))
+            {
+                IsolatedStorageFileStream readStream = new IsolatedStorageFileStream(filePath + identifier, System.IO.FileMode.Open,FileAccess.Read, file);
+
+                Stream reader = new StreamReader(readStream).BaseStream;
+
+                byte[] EncryptedPinByte = new byte[reader.Length];
+                reader.Read(EncryptedPinByte, 0, EncryptedPinByte.Length);
+                
+
+                //Decrypt the data
+                DecryptedPinByte = new string(Encoding.UTF8.GetChars(CryptographicEngine.Decrypt(key,EncryptedPinByte.AsBuffer(),iv).ToArray()));
+            }
+            return DecryptedPinByte;
+        }
+        /// <summary>
+        /// Deletes the Encrypted text saved in the local settings of the application
+        /// </summary>
+        /// <param name="identifier">String that is used to identifie the data that will be removed</param>
+        private static void DeletedEncryptedText(string identifier)
+        {
+            var settings = ApplicationData.Current.LocalSettings;
+            if (settings.Values.ContainsKey(identifier))
+            {
+                settings.Values.Remove(identifier);
+            }
+
+            IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
+            if (file.FileExists(filePath + identifier))
+            {
+                file.DeleteFile(filePath + identifier);
+            }
+            usuario = null;
+            senha = null;
         }
 
         /// <summary>

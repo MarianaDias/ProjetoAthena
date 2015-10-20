@@ -21,8 +21,7 @@ namespace ProjetoAthena.Pages
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class Page_Livros : Page
-    {
-        AthenaData dadosLogin;
+    {        
         public Page_Livros()
         {
             this.InitializeComponent();
