@@ -60,7 +60,55 @@ namespace ProjetoAthena.Pages
 
         private void renovar_Click(object sender, RoutedEventArgs e)
         {
+            if (App.ViewModel.Items.Count > 0)
+            {
+                if (App.NetWorkAvailable)
+                {
+                    App.DataConexao.RenovarLivros(RenLivrosCallback);
+                }
+                else
+                {
+                    livro1.Text = "sem conexão";
 
+                }
+            }
+            else
+            {
+                livro1.Text = "sem livros pra renovar";
+            }
+        }
+        void RenLivrosCallback(IAsyncResult resultado)
+        {
+            if (App.DataConexao.Erro)
+            {
+                var ignored = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,() => 
+                {
+                    livro1.Text = "erro";
+                });
+            }
+            else
+            {
+                var ignored = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,() => 
+                {
+                    bool reservado = false;
+                    foreach (ItemViewModel item in App.ViewModel.Items)
+                    {
+                        if (item.Reservado)
+                        {
+                            reservado = true;
+                            break;
+                        }
+                    }
+                    if (reservado)
+                    {
+                        livro1.Text = "RESERVADO";
+                    }
+                    else
+                    {
+                        livro1.Text = "RENOVADO";
+                    }
+                });
+            }
         }
     }
 }

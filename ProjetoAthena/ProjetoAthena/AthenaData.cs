@@ -145,7 +145,7 @@ namespace ProjetoAthena
         {
             get
             {
-                return siteAthenaRenovar;
+                return siteAthenaRenovar.Replace("ID_TOKEN",token);
             }
 
          
@@ -382,7 +382,7 @@ namespace ProjetoAthena
                     HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(responseString);
                     List<HtmlNode> node = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList();
-                    HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[4];
+                    HtmlNode table = doc.DocumentNode.Descendants().Where(n => n.Name == "table").ToList()[3];
                     int idcount = 0, count =0;                    
                     foreach(HtmlNode tr in table.ChildNodes.Where(n => n.Name == "tr"))
                     {
