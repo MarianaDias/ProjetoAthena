@@ -20,6 +20,8 @@ using Windows.Security.Cryptography.Core;
 using Windows.Storage.Streams;
 using Windows.Security.Cryptography;
 using System.IO.IsolatedStorage;
+using System.Net.NetworkInformation;
+using Windows.Networking.Connectivity;
 
 namespace ProjetoAthena
 {
@@ -72,12 +74,36 @@ namespace ProjetoAthena
                 SaveEncryptedText(senha, App.PasswordID);
             }
         }
+        private static bool netWorkAvailable = false;
+        public static bool NetWorkAvailable
+        {
+            get
+            {
+                return netWorkAvailable;
+            }
+
+            set
+            {
+                netWorkAvailable = value;
+            }
+        }
+        private static bool check = false;
+        public static bool Check
+        {
+            
+            set
+            {
+                check = value;
+            }
+        }
 
         public static string UsernameID = "Username";
         public static string PasswordID = "Password";
         public static string BooksID = "Books";
 
+        
         private static string filePath = "EncryptedFile";
+       
         //Algorithm to provid a key to encryption
         //Use AES, CBC mode with PKCS#7 padding (good default choice)
         private static SymmetricKeyAlgorithmProvider aesCbcPkcs7 = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
@@ -99,8 +125,16 @@ namespace ProjetoAthena
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
+            netWorkAvailable = NetworkInterface.GetIsNetworkAvailable();
         }
 
+        private void NetworkInformation_NetworkStatusChanged(object sender)
+        {
+            netWorkAvailable = NetworkInterface.GetIsNetworkAvailable();
+        }
+
+       
         /// <summary>
         /// Load an encrypted text to the local settings of the application
         /// </summary>
@@ -184,7 +218,42 @@ namespace ProjetoAthena
             usuario = null;
             senha = null;
         }
+        private static void SaveBooks()
+        {
+            var settings = ApplicationData.Current.LocalSettings;
+            if (!settings.Values.ContainsKey(BooksID))
+            {
+                settings.Values.Add(BooksID,...);
 
+            }
+            else
+            {
+                settings.Values[BooksID] = ...;
+            }
+
+        }
+
+        private static void RemoveBooks()
+        {
+            var settings = ApplicationData.Current.LocalSettings;
+            if (settings.Values.ContainsKey(BooksID))
+            {
+                settings.Values.Remove(BooksID);
+            }
+           ....IsDataLoad = false;
+        }
+
+        private static void Logout()
+        {
+            DeletedEncryptedText(UsernameID);
+            DeletedEncryptedText(PasswordID);
+            RemoveBooks();
+            dataConexao = null;
+            ....Items.Clear();
+        }
+
+      
+       
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
@@ -253,6 +322,12 @@ namespace ProjetoAthena
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
-        }
+            SaveBooks();
+            if (check)
+            {
+                Usuario = DataConexao.Usuario;
+                Senha = DataConexao.Senha;
+            }            
+        }        
     }
 }

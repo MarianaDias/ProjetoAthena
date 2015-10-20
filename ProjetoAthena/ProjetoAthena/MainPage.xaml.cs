@@ -50,9 +50,16 @@ namespace ProjetoAthena
 
         private void logar_Click(object sender, RoutedEventArgs e)
         {
-            Data.RetornarLivros(Loga);
-            Data.Usuario = CPF.Text;
-            Data.Senha = Senha.Password;
+            App.DataConexao.RetornarLivros(Loga);
+            App.DataConexao.Usuario = CPF.Text;
+            App.DataConexao.Senha = Senha.Password;
+        }
+
+        private void lembrar_Click(object sender, RoutedEventArgs e)
+        {
+            App.DataConexao.Usuario = CPF.Text;
+            App.DataConexao.Senha = Senha.Password;
+            App.Check = true;
         }
     }
 }
