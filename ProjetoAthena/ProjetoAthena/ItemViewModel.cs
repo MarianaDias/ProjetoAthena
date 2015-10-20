@@ -70,8 +70,8 @@ namespace ProjetoAthena
             set
             {                
                 stringDevolucao = value;                
-                dataDevolucao = new DateTime(2000 + Convert.ToInt32(stringDevolucao.Substring(6)), Convert.ToInt32(stringDevolucao.Substring(3, 2)), Convert.ToInt32(stringDevolucao.Substring(0, 2)));
-                //CheckStatus();
+                DataDevolucao = new DateTime(2000 + Convert.ToInt32(stringDevolucao.Substring(6)), Convert.ToInt32(stringDevolucao.Substring(3, 2)), Convert.ToInt32(stringDevolucao.Substring(0, 2)));
+                CheckStatus();
                 NotifyPropertyChanged("StringDevolucao");
             }
         }
@@ -129,7 +129,7 @@ namespace ProjetoAthena
             }
         }
 
-        /*private void CheckStatus()
+        private void CheckStatus()
         {
             int totalDias = (dataDevolucao - DateTime.Now).Days;
             if (totalDias >= 7)
@@ -152,7 +152,7 @@ namespace ProjetoAthena
             {
                 Status = "Reservado";
             }
-        }*/
+        }
 
     }
 }

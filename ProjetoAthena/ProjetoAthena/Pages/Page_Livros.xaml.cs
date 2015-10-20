@@ -31,7 +31,7 @@ namespace ProjetoAthena.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);            
+            base.OnNavigatedTo(e);                        
         }
 
 
@@ -104,8 +104,22 @@ namespace ProjetoAthena.Pages
                         livro1.Text = "RESERVADO";
                     }
                     else
-                    {
-                        livro1.Text = "RENOVADO";
+                    {                        
+                        List<string> livros = new List<string>();
+                        List<string> datadev = new List<string>();
+                        List<string> status = new List<string>();
+                        foreach (ItemViewModel item in App.ViewModel.Items)
+                        {
+                            livros.Add(item.Titulo);
+                            datadev.Add(item.StringDevolucao);
+                            status.Add(item.Status);
+                        }
+                        if (livros.ElementAt(0) != null)
+                        {
+                            livro1.Text = livros.ElementAt(0);
+                            datadev1.Text = datadev.ElementAt(0);
+                            temporest1.Text = status.ElementAt(0);
+                        }
                     }
                 });
             }

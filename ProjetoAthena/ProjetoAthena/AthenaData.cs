@@ -395,8 +395,8 @@ namespace ProjetoAthena
                         {
                             var ignored2 =  activeDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
                             {
-                                string stringDevolucao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[3].InnerText;
-                                bool reservado = stringDevolucao.Length > 8;
+                                string motivoParaNaoRenovacao = tr.ChildNodes.Where(n => n.Name == "td").ToList()[8].InnerText;                                
+                                bool reservado = motivoParaNaoRenovacao.Equals("Item possui reservas.");
                                 App.ViewModel.Items.Add(new ItemViewModel()
                                 {
                                     Id = idcount++.ToString(),

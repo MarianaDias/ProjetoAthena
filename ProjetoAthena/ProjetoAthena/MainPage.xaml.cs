@@ -23,7 +23,7 @@ namespace ProjetoAthena
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
-    {
+    {        
         public MainPage()
         {
             this.InitializeComponent();
@@ -60,6 +60,10 @@ namespace ProjetoAthena
             App.DataConexao.Usuario = CPF.Text;
             App.DataConexao.Senha = Senha.Password;
             App.Check = true;
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);            
         }
     }
 }
