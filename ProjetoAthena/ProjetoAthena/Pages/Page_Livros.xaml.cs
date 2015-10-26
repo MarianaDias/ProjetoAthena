@@ -104,21 +104,35 @@ namespace ProjetoAthena.Pages
                         livro1.Text = "RESERVADO";
                     }
                     else
-                    {                        
-                        List<string> livros = new List<string>();
-                        List<string> datadev = new List<string>();
-                        List<string> status = new List<string>();
+                    {
+                        int number = 0;                     
                         foreach (ItemViewModel item in App.ViewModel.Items)
                         {
-                            livros.Add(item.Titulo);
-                            datadev.Add(item.StringDevolucao);
-                            status.Add(item.Status);
-                        }
-                        if (livros.ElementAt(0) != null)
-                        {
-                            livro1.Text = livros.ElementAt(0);
-                            datadev1.Text = datadev.ElementAt(0);
-                            temporest1.Text = status.ElementAt(0);
+                            switch (number)
+                            {
+                                case 0: livro1.Text = item.Titulo;
+                                    datadev1.Text = item.StringDevolucao;
+                                    temporest1.Text = item.Status;
+                                    break;
+                                case 1:
+                                    livro2.Text = item.Titulo;
+                                    datadev2.Text = item.StringDevolucao;
+                                    temporest2.Text = item.Status;
+                                    break;
+                                case 2:
+                                    livro3.Text = item.Titulo;
+                                    datadev3.Text = item.StringDevolucao;
+                                    temporest3.Text = item.Status;
+                                    break;
+                                case 3:
+                                    livro4.Text = item.Titulo;
+                                    datadev4.Text = item.StringDevolucao;
+                                    temporest4.Text = item.Status;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            number++;
                         }
                     }
                 });
