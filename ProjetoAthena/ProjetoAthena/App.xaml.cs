@@ -169,7 +169,7 @@ namespace ProjetoAthena
             //Encrypt the data
             // Convert the PIN to a byte[].
             byte[] PinByte = Encoding.UTF8.GetBytes(textToEncrypt);
-            byte[] EncryptedPinByte = CryptographicEngine.Encrypt(key,PinByte.AsBuffer(),iv).ToArray();
+            //byte[] EncryptedPinByte = CryptographicEngine.Encrypt(key,PinByte.AsBuffer(),iv).ToArray();
 
             // Create a file in the application's isolated storage.
             IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
@@ -177,7 +177,7 @@ namespace ProjetoAthena
 
             // Write pinData to the file.
             Stream writer = new StreamWriter(writestream).BaseStream;
-            writer.Write(EncryptedPinByte, 0, EncryptedPinByte.Length);            
+            writer.Write(PinByte, 0, PinByte.Length);
         }
 
         /// <summary>
@@ -192,8 +192,8 @@ namespace ProjetoAthena
             {
                 saved = Convert.ToBoolean(ApplicationData.Current.LocalSettings.Values[identifier]);
             }
-            string DecryptedPinByte = null;
-
+            byte[] pinByte = null;
+            string data = null;
             IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
             if (saved && file.FileExists(filePath + identifier))
             {
@@ -201,14 +201,23 @@ namespace ProjetoAthena
 
                 Stream reader = new StreamReader(readStream).BaseStream;
 
-                byte[] EncryptedPinByte = new byte[reader.Length];
-                reader.Read(EncryptedPinByte, 0, EncryptedPinByte.Length);
-                
+                //byte[] EncryptedPinByte = new byte[reader.Length];
+                //reader.Read(EncryptedPinByte, 0, EncryptedPinByte.Length);
 
+                pinByte = new byte[reader.Length];
+                for(int i = 0; i < reader.Length; i++)
+                {                    
+                    byte[] intBytes = BitConverter.GetBytes(reader.ReadByte());
+                    if (BitConverter.IsLittleEndian)
+                        Array.Reverse(intBytes);
+                    byte[] result = intBytes;
+                    pinByte[i] = result[0];
+                }
+                data = new string(Encoding.UTF8.GetChars(pinByte));
                 //Decrypt the data
-                DecryptedPinByte = new string(Encoding.UTF8.GetChars(CryptographicEngine.Decrypt(key,EncryptedPinByte.AsBuffer(),iv).ToArray()));
+                //DecryptedPinByte = new string(Encoding.UTF8.GetChars(CryptographicEngine.Decrypt(key,EncryptedPinByte.AsBuffer(),iv).ToArray()));
             }
-            return DecryptedPinByte;
+            return data;
         }
         /// <summary>
         /// Deletes the Encrypted text saved in the local settings of the application
@@ -333,12 +342,12 @@ namespace ProjetoAthena
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
-            deferral.Complete();
             if (check)
             {
                 Usuario = DataConexao.Usuario;
                 Senha = DataConexao.Senha;
-            }            
+            }
+            deferral.Complete();               
         }        
     }
 }

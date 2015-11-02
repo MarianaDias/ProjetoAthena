@@ -30,13 +30,18 @@ namespace ProjetoAthena
         }
 
         void Loga(IAsyncResult resultado)
-        {            
+        {
             if (!App.DataConexao.Erro)
             {
-                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros)); });                
-            }            
+                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { this.Frame.Navigate(typeof(Pages.Page_Livros)); });
+            }
+            else if (App.DataConexao.DadosIncorretos)
+            {
+                var message = new MessageDialog("", "Usuário ou senha incorreto(a)!");
+                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => { await message.ShowAsync(); });
+            }
         }
-
+                
         private void sobre_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Pages.Page_Sobre));
@@ -48,22 +53,32 @@ namespace ProjetoAthena
             Senha.Password = "";
         }
 
-        private void logar_Click(object sender, RoutedEventArgs e)
+        private async void logar_Click(object sender, RoutedEventArgs e)
         {
-            App.DataConexao.RetornarLivros(Loga);
-            App.DataConexao.Usuario = CPF.Text;
-            App.DataConexao.Senha = Senha.Password;
+            if (App.NetWorkAvailable)
+            {
+
+                App.DataConexao.RetornarLivros(Loga);
+                App.DataConexao.Usuario = CPF.Text;
+                App.DataConexao.Senha = Senha.Password;
+            }
+            else if(!App.NetWorkAvailable)
+            {
+                var dialog = new MessageDialog("","Sem conexão!");
+                await dialog.ShowAsync();
+            }            
         }
 
         private void lembrar_Click(object sender, RoutedEventArgs e)
-        {
-            App.DataConexao.Usuario = CPF.Text;
-            App.DataConexao.Senha = Senha.Password;
+        {                    
             App.Check = true;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);            
+            base.OnNavigatedTo(e);
+            CPF.Text = App.DataConexao.Usuario = App.Usuario;
+            Senha.Password = App.DataConexao.Senha = App.Senha;
         }
+
     }
 }
