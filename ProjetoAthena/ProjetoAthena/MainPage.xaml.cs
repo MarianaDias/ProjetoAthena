@@ -72,12 +72,12 @@ namespace ProjetoAthena
         {                    
             App.Check = true;
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+       /* protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             CPF.Text = App.DataConexao.Usuario = App.Usuario;
             Senha.Password = App.DataConexao.Senha = App.Senha;
-        }
+        }*/
 
     }
 }

@@ -49,14 +49,14 @@ namespace ProjetoAthena.Pages
             livro2.Text = "";
             livro3.Text = "";
             livro4.Text = "";
-            datadev1.Text = "Data Devolução:";
-            datadev2.Text = "Data Devolução:";
-            datadev3.Text = "Data Devolução:";
-            datadev4.Text = "Data Devolução:";
-            temporest1.Text = "dias restantes";
-            temporest2.Text = "dias restantes";
-            temporest3.Text = "dias restantes";
-            temporest4.Text = "dias restantes";
+            datadev1.Text = "";
+            datadev2.Text = "";
+            datadev3.Text = "";
+            datadev4.Text = "";
+            temporest1.Text = "";
+            temporest2.Text = "";
+            temporest3.Text = "";
+            temporest4.Text = "";
         }
 
         private void renovar_Click(object sender, RoutedEventArgs e)
