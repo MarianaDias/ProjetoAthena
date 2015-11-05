@@ -28,14 +28,37 @@
                 <ScrollViewer x:ConnectionId='3'  x:Name="barra" RelativePanel.Below="sobre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,20,0,0">
                     <TextBlock x:ConnectionId='5' ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="textosobre" HorizontalAlignment="Left" Height="400" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"                                                FontSize="15" Margin="0,0,15,0">
             	<Span>
-            		<Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mauris sapien, rhoncus at vestibulum eu, finibus id massa. Nulla lobortis et tellus eu egestas. Nam in maximus nunc, at convallis ipsum. Ut ac dui tortor. Sed est lorem, laoreet nec diam id, convallis pulvinar tortor. Vivamus non vehicula lectus. Donec sollicitudin lacinia ante at aliquam. Mauris vulputate ligula orci. Nam aliquam neque sem, ac luctus nibh scelerisque tempor. Maecenas ornare erat quis lacus ultricies, id condimentum quam fringilla. Aenean suscipit placerat dictum. Duis vitae gravida est. Fusce fringilla lorem non laoreet hendrerit. Proin non arcu blandit, accumsan turpis quis, aliquet quam. "/>
+            		<Run Text="Athena Renovador é um aplicativo utilizado como renovador de livros da biblioteca da UNESP, utilizando como base o sistema Athena."/>
             	</Span>
-            	<LineBreak/>
+            	<LineBreak/>                        
             	<Span>
-            		<Run Text="Sed libero velit, facilisis eu interdum vitae, tincidunt a ante. Fusce libero massa, dapibus quis eros id, vehicula luctus mauris. Suspendisse tempus enim felis, gravida accumsan risus condimentum nec. Sed lacinia purus et pretium interdum. Phasellus interdum gravida mattis. Donec condimentum quam at urna rutrum dignissim. Vivamus semper sed arcu nec interdum. Cras bibendum arcu eu faucibus lacinia. Ut congue faucibus sapien, eget elementum ligula lobortis malesuada. Sed vel ipsum erat. Etiam urna ligula, porta ac congue ut, pharetra eu lacus. Nunc maximus est quis lobortis dignissim."/>
+            		<Run Text="Este é um aplicativo não oficial que utiliza todos os dados do sistema Athena, o qual é de propriedade da Universidade Estadual Paulista Júlio de Mesquita Filho - UNESP. O desenvolvedor não é responsável por seu conteúdo."/>
             	</Span>
+                  <Span>
+            		<Run Text=""/>
+            	</Span>
+            	<LineBreak/> 
+                 <Span>
+            		<Run Text=""/>
+            	</Span>
+            	<LineBreak/>  
+                 <Span>
+            		<Run Text=""/>
+            	</Span>
+            	<LineBreak/>  
+                	<LineBreak/>  
+                 <Span>
+            		<Run Text=""/>
+            	</Span>
+            	<LineBreak/> 
+                 	<LineBreak/>  
+                 <Span>
+            		<Run Text=""/>
+            	</Span>
+            	<LineBreak/> 
+                        
             	<LineBreak/>
-            	<Run Text=""/>
+            	<Run Text="Aplicativo Desenvolvido por Gabriel Oliveira. Adaptado por Mariana Dias e Matheus Solha "/>
                     </TextBlock>
                 </ScrollViewer>
                 <Button x:ConnectionId='4' x:Name="voltar" Content="Voltar" Margin ="0,20,0,0" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" FontSize="20" RelativePanel.Below= "barra" RelativePanel.AlignLeftWith="barra"                     />
