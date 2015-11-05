@@ -1,1 +1,1 @@
-C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena.csproj;x86
+C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena.csproj;x86

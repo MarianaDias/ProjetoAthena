@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="ProjetoAthena.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetoAthena"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CPF.Width" Value="512"/>
+                        <Setter Target="Senha.Width" Value="512"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <RelativePanel>
+            <TextBlock x:ConnectionId='1' x:Name="Athena"  HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Athena Renewer" FontSize="40"  VerticalAlignment="Top" Width="Auto" RelativePanel.RightOf="logolivro" RelativePanel.AlignTopWithPanel="True" Margin="40,5,0,0" />
+            <TextBox x:ConnectionId='2' x:Name="CPF" HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256" Margin="0,-80,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" MaxLength="11"                              />
+            <PasswordBox x:ConnectionId='3' Password="" x:Name="Senha" HorizontalAlignment="Left" Height="32" Margin="0,80,0,0"  VerticalAlignment="Top" Width="256" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" MaxLength="4"                                        />
+            <TextBlock x:ConnectionId='4' x:Name="textoCPF" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="CPF:" FontSize="25" VerticalAlignment="Top" Width="Auto" RelativePanel.Above="CPF" RelativePanel.AlignLeftWith="CPF" Margin="0,-112,0,0"/>
+            <TextBlock x:ConnectionId='5' x:Name="textoSenha" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Senha:" FontSize="25" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignLeftWith="Senha" RelativePanel.Below="CPF" Margin="0,-8,0,0"/>
+            <CheckBox x:ConnectionId='6' x:Name="lembrar" Content="Lembrar-me" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignLeftWith="Senha" RelativePanel.Below="Senha" Margin="0,0,0,0"                      />
+            <Button x:ConnectionId='7' x:Name="logar" Content="Login" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignRightWith="Senha" RelativePanel.Below="lembrar" FontSize="20"                    />
+            <Button x:ConnectionId='8' x:Name="limpar" Content="Limpar" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignLeftWith="Senha" RelativePanel.Below="lembrar" FontSize="20"                     />
+            <Image x:ConnectionId='9' x:Name="logolivro" Visibility="Visible" Source="/Resources/Images/livros.jpg" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="60" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="20,5,0,0"/>
+            <Button x:ConnectionId='10' x:Name="sobre" Content="Sobre" HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"                      Margin="0,20,20,0"/>
+            <TextBlock x:ConnectionId='11' x:Name="textoaviso" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Aviso" VerticalAlignment="Top" Width="Auto" Visibility="Collapsed" RelativePanel.Below="CPF" RelativePanel.AlignLeftWith="CPF" Margin="0,-50,0,0 " FontStyle="Oblique" Foreground="Red"/>
+            <TextBlock x:ConnectionId='12' x:Name="senhaaviso" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Aviso" VerticalAlignment="Top" Width="Auto" Visibility="Collapsed" RelativePanel.Below="Senha" RelativePanel.AlignRightWith="Senha" Margin="0,0,0,0 " FontStyle="Oblique" Foreground="Red"/>
+        </RelativePanel>
+        
+    </Grid>
+</Page>
+

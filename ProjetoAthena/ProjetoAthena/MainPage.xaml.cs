@@ -120,23 +120,23 @@ namespace ProjetoAthena
 
         private void Senha_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (Senha.Password.Length == 11)
+            if (Senha.Password.Length == 4)
             {
-                textoaviso.Visibility = Visibility.Collapsed;
-                byte[] asciiBytes = Encoding.ASCII.GetBytes(CPF.Text);
+                senhaaviso.Visibility = Visibility.Collapsed;
+                byte[] asciiBytes = Encoding.ASCII.GetBytes(Senha.Password);
                 foreach (byte i in asciiBytes)
                 {
                     if (i < 48 || i > 57)
                     {
-                        textoaviso.Text = "Senha inválido";
-                        textoaviso.Visibility = Visibility.Visible;
+                        senhaaviso.Text = "Senha inválida";
+                        senhaaviso.Visibility = Visibility.Visible;
                         break;
                     }
                 }
             }
-            else if (Senha.Password.Length < 11)
+            else if (Senha.Password.Length < 4)
             {
-                textoaviso.Visibility = Visibility.Collapsed;
+                senhaaviso.Visibility = Visibility.Collapsed;
             }
         }
     }
