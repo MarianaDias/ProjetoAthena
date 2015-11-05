@@ -37,8 +37,11 @@ namespace ProjetoAthena
             }
             else if (App.DataConexao.DadosIncorretos)
             {
-                var message = new MessageDialog("", "Usuário ou senha incorreto(a)!");
-                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => { await message.ShowAsync(); });
+                
+                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal,  () => {
+                    textoaviso.Text = "CPF ou Senha Incorreto";
+                    textoaviso.Visibility = Visibility.Visible;
+                });
             }
         }
                 
@@ -53,7 +56,7 @@ namespace ProjetoAthena
             Senha.Password = "";
         }
 
-        private async void logar_Click(object sender, RoutedEventArgs e)
+        private  void logar_Click(object sender, RoutedEventArgs e)
         {
             if (App.NetWorkAvailable)
             {
@@ -63,8 +66,8 @@ namespace ProjetoAthena
             }
             else if(!App.NetWorkAvailable)
             {
-                var dialog = new MessageDialog("","Sem conexão!");
-                await dialog.ShowAsync();
+                textoaviso.Text = "Sem Conexão";
+                textoaviso.Visibility = Visibility.Visible;
             }            
         }
 
