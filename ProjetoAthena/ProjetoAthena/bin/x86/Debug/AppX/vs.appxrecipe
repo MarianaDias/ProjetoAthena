@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-05T20:12:43.780</Modified>
+      <Modified>2015-11-05T20:18:55.158</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +70,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\entrypoint\ProjetoAthena.exe">
       <PackagePath>entrypoint\ProjetoAthena.exe</PackagePath>
-      <Modified>2015-11-05T20:12:40.811</Modified>
+      <Modified>2015-11-05T20:18:53.020</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
@@ -102,11 +102,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.exe">
       <PackagePath>ProjetoAthena.exe</PackagePath>
-      <Modified>2015-11-05T20:12:43.778</Modified>
+      <Modified>2015-11-05T20:18:55.156</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.xr.xml">
       <PackagePath>ProjetoAthena.xr.xml</PackagePath>
-      <Modified>2015-11-05T19:43:35.873</Modified>
+      <Modified>2015-11-05T20:18:52.721</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
@@ -114,7 +114,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-11-05T20:12:42.983</Modified>
+      <Modified>2015-11-05T20:18:54.462</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Resources\Images\livros.jpg">
       <PackagePath>Resources\Images\livros.jpg</PackagePath>
