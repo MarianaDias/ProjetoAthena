@@ -59,13 +59,13 @@ namespace ProjetoAthena
             get
             {
                 if (usuario == null)
-                    usuario = LoadEncryptedText(App.UsernameID);
+                    usuario = LoadText(App.UsernameID);
                 return usuario;
             }
             set
             {
                 usuario = value;
-                SaveEncryptedText(usuario, App.UsernameID);
+                SaveText(usuario, App.UsernameID);
             }
         }
 
@@ -76,13 +76,13 @@ namespace ProjetoAthena
             get
             {
                 if (senha == null)
-                    senha = LoadEncryptedText(App.PasswordID);
+                    senha = LoadText(App.PasswordID);
                 return senha;
             }
             set
             {
                 senha = value;
-                SaveEncryptedText(senha, App.PasswordID);
+                SaveText(senha, App.PasswordID);
             }
         }
         private static bool netWorkAvailable = false;
@@ -115,16 +115,6 @@ namespace ProjetoAthena
 
         
         private static string filePath = "EncryptedFile";
-       
-        //Algorithm to provid a key to encryption
-        //Use AES, CBC mode with PKCS#7 padding (good default choice)
-        private static SymmetricKeyAlgorithmProvider aesCbcPkcs7 = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
-        //Create an AES 128-bit (16 byte) key ----- POSSIVEL ERROOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!        
-        static CryptographicKey key = aesCbcPkcs7.CreateSymmetricKey(CryptographicBuffer.GenerateRandom(16));
-
-        //Create a 16 byte initialization vector
-        static IBuffer iv = CryptographicBuffer.GenerateRandom(aesCbcPkcs7.BlockLength);
-
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -138,7 +128,7 @@ namespace ProjetoAthena
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
-            netWorkAvailable = NetworkInterface.GetIsNetworkAvailable();
+            netWorkAvailable = NetworkInterface.GetIsNetworkAvailable();            
         }
 
         private void NetworkInformation_NetworkStatusChanged(object sender)
@@ -152,32 +142,18 @@ namespace ProjetoAthena
         /// </summary>
         /// <param name="textToEncrypt">Text to be encrypted</param>
         /// <param name="identifier">String that is used to identifie the text that will be encrypted</param>
-        private static void SaveEncryptedText(string textToEncrypt, string identifier)
-        {
-            
+        private static void SaveText(string textToSave, string identifier)
+        {            
             var settings = ApplicationData.Current.LocalSettings;
                   
             if (!settings.Values.ContainsKey(identifier))
             {
-                settings.Values.Add(identifier, true);
+                settings.Values.Add(identifier, textToSave);
             }
             else
             {
-                settings.Values[identifier] = true;
-            }
-            
-            //Encrypt the data
-            // Convert the PIN to a byte[].
-            byte[] PinByte = Encoding.UTF8.GetBytes(textToEncrypt);
-            //byte[] EncryptedPinByte = CryptographicEngine.Encrypt(key,PinByte.AsBuffer(),iv).ToArray();
-
-            // Create a file in the application's isolated storage.
-            IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
-            IsolatedStorageFileStream writestream = new IsolatedStorageFileStream(filePath + identifier, System.IO.FileMode.Create, System.IO.FileAccess.Write, file);
-
-            // Write pinData to the file.
-            Stream writer = new StreamWriter(writestream).BaseStream;
-            writer.Write(PinByte, 0, PinByte.Length);
+                settings.Values[identifier] = textToSave;
+            }            
         }
 
         /// <summary>
@@ -185,39 +161,23 @@ namespace ProjetoAthena
         /// </summary>
         /// <param name="identifier">String that is used to identifie the data that will be loaded</param>
         /// <returns></returns>
-        private static string LoadEncryptedText(string identifier)
+        private static string LoadText(string identifier)
         {
-            bool saved = false;
-            if (ApplicationData.Current.LocalSettings.Values.ContainsKey(identifier))
+            string result = "";
+            var applicationData = Windows.Storage.ApplicationData.Current;
+            var localSettings = applicationData.LocalSettings;
+            if (localSettings.Values.ContainsKey(identifier))
             {
-                saved = Convert.ToBoolean(ApplicationData.Current.LocalSettings.Values[identifier]);
-            }
-            byte[] pinByte = null;
-            string data = null;
-            IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
-            if (saved && file.FileExists(filePath + identifier))
-            {
-                IsolatedStorageFileStream readStream = new IsolatedStorageFileStream(filePath + identifier, System.IO.FileMode.Open,FileAccess.Read, file);
+                var content = localSettings.Values[identifier];
+                result = Convert.ToString(content);
+            }            
+            return result;
+        }
 
-                Stream reader = new StreamReader(readStream).BaseStream;
-
-                //byte[] EncryptedPinByte = new byte[reader.Length];
-                //reader.Read(EncryptedPinByte, 0, EncryptedPinByte.Length);
-
-                pinByte = new byte[reader.Length];
-                for(int i = 0; i < reader.Length; i++)
-                {                    
-                    byte[] intBytes = BitConverter.GetBytes(reader.ReadByte());
-                    if (BitConverter.IsLittleEndian)
-                        Array.Reverse(intBytes);
-                    byte[] result = intBytes;
-                    pinByte[i] = result[0];
-                }
-                data = new string(Encoding.UTF8.GetChars(pinByte));
-                //Decrypt the data
-                //DecryptedPinByte = new string(Encoding.UTF8.GetChars(CryptographicEngine.Decrypt(key,EncryptedPinByte.AsBuffer(),iv).ToArray()));
-            }
-            return data;
+        public static void Uncheck()
+        {
+            DeletedEncryptedText(UsernameID);
+            DeletedEncryptedText(PasswordID);
         }
         /// <summary>
         /// Deletes the Encrypted text saved in the local settings of the application
@@ -264,7 +224,7 @@ namespace ProjetoAthena
             viewModel.IsDataLoaded = false;
         }
       
-        private static void Logout()
+        public static void Logout()
         {
             DeletedEncryptedText(UsernameID);
             DeletedEncryptedText(PasswordID);

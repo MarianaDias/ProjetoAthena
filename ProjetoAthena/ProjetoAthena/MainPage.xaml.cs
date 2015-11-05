@@ -50,7 +50,7 @@ namespace ProjetoAthena
         private void limpar_Click(object sender, RoutedEventArgs e)
         {
             CPF.Text = "";
-            Senha.Password = "";
+            Senha.Password = "";            
         }
 
         private async void logar_Click(object sender, RoutedEventArgs e)
@@ -69,15 +69,29 @@ namespace ProjetoAthena
         }
 
         private void lembrar_Click(object sender, RoutedEventArgs e)
-        {                    
-            App.Check = true;
+        {
+            if ((bool)lembrar.IsChecked)
+            {
+                App.Check = true;
+                App.DataConexao.Usuario = CPF.Text;
+                App.DataConexao.Senha = Senha.Password;
+                App.Usuario = CPF.Text;
+                App.Senha = Senha.Password;
+            }else{
+                App.Check = false;
+                App.Uncheck();
+            }            
         }
-       /* protected override void OnNavigatedTo(NavigationEventArgs e)
+       protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            CPF.Text = App.DataConexao.Usuario = App.Usuario;
-            Senha.Password = App.DataConexao.Senha = App.Senha;
-        }*/
+            if(App.Usuario != "" && App.Senha != "")
+            {
+                CPF.Text = App.Usuario;
+                Senha.Password = App.Senha;
+                lembrar.IsChecked = true;
+            }            
+        }
 
     }
 }
