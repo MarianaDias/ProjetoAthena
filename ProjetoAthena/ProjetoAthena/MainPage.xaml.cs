@@ -93,6 +93,7 @@ namespace ProjetoAthena
                 CPF.Text = App.Usuario;
                 Senha.Password = App.Senha;
                 lembrar.IsChecked = true;
+                logar_Click(lembrar,null);
             }            
         }
 

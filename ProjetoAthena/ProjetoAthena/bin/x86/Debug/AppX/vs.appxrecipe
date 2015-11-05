@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-05T21:18:51.442</Modified>
+      <Modified>2015-11-05T21:24:10.808</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +70,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\entrypoint\ProjetoAthena.exe">
       <PackagePath>entrypoint\ProjetoAthena.exe</PackagePath>
-      <Modified>2015-11-05T21:18:49.244</Modified>
+      <Modified>2015-11-05T21:24:09.352</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
@@ -102,7 +102,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.exe">
       <PackagePath>ProjetoAthena.exe</PackagePath>
-      <Modified>2015-11-05T21:18:51.436</Modified>
+      <Modified>2015-11-05T21:24:10.802</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.xr.xml">
       <PackagePath>ProjetoAthena.xr.xml</PackagePath>
