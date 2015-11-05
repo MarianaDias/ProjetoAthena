@@ -32,14 +32,13 @@ namespace ProjetoAthena.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            MostraLivros();
+            App.DataConexao.RetornarLivros(RenLivrosCallback);
         }
 
 
         private void voltar_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
-            App.Logout();
+            this.Frame.Navigate(typeof(MainPage));            
         }   
             
         

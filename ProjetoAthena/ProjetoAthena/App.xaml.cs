@@ -128,7 +128,7 @@ namespace ProjetoAthena
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
-            netWorkAvailable = NetworkInterface.GetIsNetworkAvailable();            
+            netWorkAvailable = NetworkInterface.GetIsNetworkAvailable();                        
         }
 
         private void NetworkInformation_NetworkStatusChanged(object sender)
@@ -233,7 +233,7 @@ namespace ProjetoAthena
             App.ViewModel.Items.Clear();
         }
 
-      
+        
        
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -275,12 +275,21 @@ namespace ProjetoAthena
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                if(Usuario != "" && Senha != "")
+                {
+                    App.DataConexao.Usuario = Usuario;
+                    App.DataConexao.Senha = Senha;
+                    rootFrame.Navigate(typeof(Pages.Page_Livros), e.Arguments);
+                }
+                else
+                {
+                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                }                
             }
             // Ensure the current window is active
             Window.Current.Activate();
         }
-
+        
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>
