@@ -51,7 +51,7 @@ namespace ProjetoAthena
             }            
             set
             {
-                usuario = value;
+                    usuario = value;                                
             }
         }
         private string senha;

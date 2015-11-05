@@ -31,7 +31,8 @@ namespace ProjetoAthena.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);                        
+            base.OnNavigatedTo(e);
+            MostraLivros();
         }
 
 
@@ -77,6 +78,57 @@ namespace ProjetoAthena.Pages
                 livro1.Text = "sem livros pra renovar";
             }
         }
+
+        void MostraLivros()
+        {
+            bool reservado = false;
+            foreach (ItemViewModel item in App.ViewModel.Items)
+            {
+                if (item.Reservado)
+                {
+                    reservado = true;
+                    break;
+                }
+            }
+            if (reservado)
+            {
+                livro1.Text = "RESERVADO";
+            }
+            else
+            {
+                int number = 0;
+                foreach (ItemViewModel item in App.ViewModel.Items)
+                {
+                    switch (number)
+                    {
+                        case 0:
+                            livro1.Text = item.Titulo;
+                            datadev1.Text = item.StringDevolucao;
+                            temporest1.Text = item.Status;
+                            break;
+                        case 1:
+                            livro2.Text = item.Titulo;
+                            datadev2.Text = item.StringDevolucao;
+                            temporest2.Text = item.Status;
+                            break;
+                        case 2:
+                            livro3.Text = item.Titulo;
+                            datadev3.Text = item.StringDevolucao;
+                            temporest3.Text = item.Status;
+                            break;
+                        case 3:
+                            livro4.Text = item.Titulo;
+                            datadev4.Text = item.StringDevolucao;
+                            temporest4.Text = item.Status;
+                            break;
+                        default:
+                            break;
+                    }
+                    number++;
+                }
+            }
+        }
+
         void RenLivrosCallback(IAsyncResult resultado)
         {
             if (App.DataConexao.Erro)
@@ -90,51 +142,7 @@ namespace ProjetoAthena.Pages
             {
                 var ignored = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,() => 
                 {
-                    bool reservado = false;
-                    foreach (ItemViewModel item in App.ViewModel.Items)
-                    {
-                        if (item.Reservado)
-                        {
-                            reservado = true;
-                            break;
-                        }
-                    }
-                    if (reservado)
-                    {
-                        livro1.Text = "RESERVADO";
-                    }
-                    else
-                    {
-                        int number = 0;                     
-                        foreach (ItemViewModel item in App.ViewModel.Items)
-                        {
-                            switch (number)
-                            {
-                                case 0: livro1.Text = item.Titulo;
-                                    datadev1.Text = item.StringDevolucao;
-                                    temporest1.Text = item.Status;
-                                    break;
-                                case 1:
-                                    livro2.Text = item.Titulo;
-                                    datadev2.Text = item.StringDevolucao;
-                                    temporest2.Text = item.Status;
-                                    break;
-                                case 2:
-                                    livro3.Text = item.Titulo;
-                                    datadev3.Text = item.StringDevolucao;
-                                    temporest3.Text = item.Status;
-                                    break;
-                                case 3:
-                                    livro4.Text = item.Titulo;
-                                    datadev4.Text = item.StringDevolucao;
-                                    temporest4.Text = item.Status;
-                                    break;
-                                default:
-                                    break;
-                            }
-                            number++;
-                        }
-                    }
+                    MostraLivros();
                 });
             }
         }

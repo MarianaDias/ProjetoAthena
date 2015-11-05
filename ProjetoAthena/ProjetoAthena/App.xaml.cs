@@ -263,7 +263,7 @@ namespace ProjetoAthena
             }
             viewModel.IsDataLoaded = false;
         }
-
+      
         private static void Logout()
         {
             DeletedEncryptedText(UsernameID);

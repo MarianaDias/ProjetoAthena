@@ -57,7 +57,6 @@ namespace ProjetoAthena
         {
             if (App.NetWorkAvailable)
             {
-
                 App.DataConexao.RetornarLivros(Loga);
                 App.DataConexao.Usuario = CPF.Text;
                 App.DataConexao.Senha = Senha.Password;
