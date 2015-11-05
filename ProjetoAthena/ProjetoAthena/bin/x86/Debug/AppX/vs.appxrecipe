@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-05T21:52:54.732</Modified>
+      <Modified>2015-11-05T22:43:50.588</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +70,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\entrypoint\ProjetoAthena.exe">
       <PackagePath>entrypoint\ProjetoAthena.exe</PackagePath>
-      <Modified>2015-11-05T21:52:53.364</Modified>
+      <Modified>2015-11-05T22:43:49.236</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
@@ -102,11 +102,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.exe">
       <PackagePath>ProjetoAthena.exe</PackagePath>
-      <Modified>2015-11-05T21:52:54.723</Modified>
+      <Modified>2015-11-05T22:43:50.581</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.xr.xml">
       <PackagePath>ProjetoAthena.xr.xml</PackagePath>
-      <Modified>2015-11-05T21:16:46.006</Modified>
+      <Modified>2015-11-05T22:08:05.370</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
@@ -114,7 +114,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-11-05T21:38:55.766</Modified>
+      <Modified>2015-11-05T22:08:07.412</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\Documents\Projetos\ProjetoAthena\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Resources\Images\livros.jpg">
       <PackagePath>Resources\Images\livros.jpg</PackagePath>

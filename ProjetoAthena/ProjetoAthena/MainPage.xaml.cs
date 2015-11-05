@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -43,8 +44,8 @@ namespace ProjetoAthena
                     textoaviso.Visibility = Visibility.Visible;
                 });
             }
-        }
-                
+        }        
+          
         private void sobre_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Pages.Page_Sobre));
@@ -96,5 +97,47 @@ namespace ProjetoAthena
             }            
         }
 
+        private void CPF_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (CPF.Text.Length == 11)
+            {
+                textoaviso.Visibility = Visibility.Collapsed;
+                byte[] asciiBytes = Encoding.ASCII.GetBytes(CPF.Text);
+                foreach (byte i in asciiBytes)
+                {
+                    if (i < 48 || i > 57)
+                    {
+                        textoaviso.Text = "CPF inválido";
+                        textoaviso.Visibility = Visibility.Visible;
+                        break;
+                    }
+                }
+            } else if (CPF.Text.Length < 11)
+            {
+                textoaviso.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Senha_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (Senha.Password.Length == 11)
+            {
+                textoaviso.Visibility = Visibility.Collapsed;
+                byte[] asciiBytes = Encoding.ASCII.GetBytes(CPF.Text);
+                foreach (byte i in asciiBytes)
+                {
+                    if (i < 48 || i > 57)
+                    {
+                        textoaviso.Text = "Senha inválido";
+                        textoaviso.Visibility = Visibility.Visible;
+                        break;
+                    }
+                }
+            }
+            else if (Senha.Password.Length < 11)
+            {
+                textoaviso.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }
