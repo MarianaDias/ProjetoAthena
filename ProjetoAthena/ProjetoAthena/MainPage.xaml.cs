@@ -99,21 +99,31 @@ namespace ProjetoAthena
 
         private void CPF_TextChanged(object sender, TextChangedEventArgs e)
         {
+            bool ok = false;
+            CPF.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
             if (CPF.Text.Length == 11)
-            {
+            {                
                 textoaviso.Visibility = Visibility.Collapsed;
                 byte[] asciiBytes = Encoding.ASCII.GetBytes(CPF.Text);
                 foreach (byte i in asciiBytes)
                 {
+                    ok = false;
                     if (i < 48 || i > 57)
                     {
+                        CPF.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Red);
                         textoaviso.Text = "CPF inválido";
                         textoaviso.Visibility = Visibility.Visible;
                         break;
                     }
+                    ok = true;
+                }
+                if (ok)
+                {
+                    CPF.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Green);
                 }
             } else if (CPF.Text.Length < 11)
             {
+                CPF.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
                 textoaviso.Visibility = Visibility.Collapsed;
             }
         }
@@ -122,12 +132,14 @@ namespace ProjetoAthena
         {
             if (Senha.Password.Length == 4)
             {
+                //Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(1, 122, 122, 122));
                 senhaaviso.Visibility = Visibility.Collapsed;
                 byte[] asciiBytes = Encoding.ASCII.GetBytes(Senha.Password);
                 foreach (byte i in asciiBytes)
                 {
                     if (i < 48 || i > 57)
                     {
+                        //Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(1,255,0,0));
                         senhaaviso.Text = "Senha inválida";
                         senhaaviso.Visibility = Visibility.Visible;
                         break;
@@ -136,6 +148,7 @@ namespace ProjetoAthena
             }
             else if (Senha.Password.Length < 4)
             {
+                //Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(1, 122, 122, 122));
                 senhaaviso.Visibility = Visibility.Collapsed;
             }
         }
