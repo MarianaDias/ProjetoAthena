@@ -132,11 +132,11 @@ namespace ProjetoAthena
         private void CheckStatus()
         {
             int totalDias = (dataDevolucao - DateTime.Now).Days;
-            if (totalDias >= 7)
+            if (totalDias >= 6)
             {
                 Status = "Renovado";
             }
-            else if (totalDias < 7 && totalDias > 0)
+            else if (totalDias < 6 && totalDias > 0)
             {
                 Status = "Devolver em " + totalDias + "dias";
             }
