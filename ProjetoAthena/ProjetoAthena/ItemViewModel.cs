@@ -107,9 +107,7 @@ namespace ProjetoAthena
                 {
                     dataDevolucao = value;                   
                     stringDevolucao = dataDevolucao.Day.ToString("00") + "/" + dataDevolucao.Month.ToString("00") + "/" + dataDevolucao.Year.ToString("00");
-                    NotifyPropertyChanged("DataDevolucao");
-                       // CheckStatus();
-                    
+                    NotifyPropertyChanged("DataDevolucao");                    
                 }
                 dataDevolucao = value;
             }

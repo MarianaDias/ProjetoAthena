@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,13 +27,61 @@ namespace ProjetoAthena.Pages
         {
             this.InitializeComponent();
             Limpar();
-            
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;            
+        }        
+
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            App.DataConexao.RetornarLivros(RenLivrosCallback);
+            App.DataConexao.RetornarLivros((IAsyncResult resultado)=>
+            {
+                bool reservado = false;
+                foreach (ItemViewModel item in App.ViewModel.Items)
+                {
+                    if (item.Reservado)
+                    {
+                        reservado = true;
+                        break;
+                    }
+                }
+                int number = 0;                
+                foreach (ItemViewModel item in App.ViewModel.Items)
+                {
+                    int totalDias = (item.DataDevolucao - DateTime.Now).Days;
+                    switch (number)
+                    {
+                        case 0:
+                            livro1.Text = item.Titulo;
+                            datadev1.Text = item.StringDevolucao;
+                            temporest1.Text = "Devolver em " + totalDias + " dias";
+                            break;
+                        case 1:
+                            livro2.Text = item.Titulo;
+                            datadev2.Text = item.StringDevolucao;
+                            temporest2.Text = "Devolver em " + totalDias + " dias";
+                            break;
+                        case 2:
+                            livro3.Text = item.Titulo;
+                            datadev3.Text = item.StringDevolucao;
+                            temporest3.Text = "Devolver em " + totalDias + " dias";
+                            break;
+                        case 3:
+                            livro4.Text = item.Titulo;
+                            datadev4.Text = item.StringDevolucao;
+                            temporest4.Text = "Devolver em " + totalDias + " dias";
+                            break;
+                        default:
+                            break;
+                    }
+                    number++;
+                }
+            });
         }
 
 
@@ -89,42 +138,35 @@ namespace ProjetoAthena.Pages
                     break;
                 }
             }
-            if (reservado)
+            int number = 0;
+            foreach (ItemViewModel item in App.ViewModel.Items)
             {
-                livro1.Text = "RESERVADO";
-            }
-            else
-            {
-                int number = 0;
-                foreach (ItemViewModel item in App.ViewModel.Items)
+                switch (number)
                 {
-                    switch (number)
-                    {
-                        case 0:
-                            livro1.Text = item.Titulo;
-                            datadev1.Text = item.StringDevolucao;
-                            temporest1.Text = item.Status;
-                            break;
-                        case 1:
-                            livro2.Text = item.Titulo;
-                            datadev2.Text = item.StringDevolucao;
-                            temporest2.Text = item.Status;
-                            break;
-                        case 2:
-                            livro3.Text = item.Titulo;
-                            datadev3.Text = item.StringDevolucao;
-                            temporest3.Text = item.Status;
-                            break;
-                        case 3:
-                            livro4.Text = item.Titulo;
-                            datadev4.Text = item.StringDevolucao;
-                            temporest4.Text = item.Status;
-                            break;
-                        default:
-                            break;
-                    }
-                    number++;
+                    case 0:
+                        livro1.Text = item.Titulo;
+                        datadev1.Text = item.StringDevolucao;
+                        temporest1.Text = item.Status;
+                        break;
+                    case 1:
+                        livro2.Text = item.Titulo;
+                        datadev2.Text = item.StringDevolucao;
+                        temporest2.Text = item.Status;
+                        break;
+                    case 2:
+                        livro3.Text = item.Titulo;
+                        datadev3.Text = item.StringDevolucao;
+                        temporest3.Text = item.Status;
+                        break;
+                    case 3:
+                        livro4.Text = item.Titulo;
+                        datadev4.Text = item.StringDevolucao;
+                        temporest4.Text = item.Status;
+                        break;
+                    default:
+                        break;
                 }
+                number++;                
             }
         }
 

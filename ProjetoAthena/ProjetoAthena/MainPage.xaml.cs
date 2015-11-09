@@ -28,6 +28,7 @@ namespace ProjetoAthena
         public MainPage()
         {
             this.InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
 
         void Loga(IAsyncResult resultado)
@@ -158,6 +159,24 @@ namespace ProjetoAthena
                 Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
                 senhaaviso.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Pages.Page_Sobre));
+        }
+
+        private void Page_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            if (LayoutRoot.Visibility == Visibility.Collapsed)
+            {
+                LayoutRoot.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                LayoutRoot.Visibility = Visibility.Collapsed;
+            }
+            
         }
     }
 }

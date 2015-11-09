@@ -59,7 +59,6 @@
                         </RelativePanel>
                     </Grid>
                 </ScrollViewer>
-                <Button x:Name="voltar" Content="Voltar" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignLeftWith="barralivros" RelativePanel.Below="barralivros" Click="voltar_Click"/>
                 <Button x:Name="renovar" Content="Renovar" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignRightWith="barralivros" RelativePanel.Below="barralivros" Click="renovar_Click"></Button>
             </RelativePanel>
         </ScrollViewer>

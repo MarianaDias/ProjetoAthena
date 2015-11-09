@@ -22,6 +22,7 @@ using Windows.Security.Cryptography;
 using System.IO.IsolatedStorage;
 using System.Net.NetworkInformation;
 using Windows.Networking.Connectivity;
+using Windows.UI.Core;
 
 namespace ProjetoAthena
 {
@@ -128,7 +129,7 @@ namespace ProjetoAthena
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
-            netWorkAvailable = NetworkInterface.GetIsNetworkAvailable();                        
+            netWorkAvailable = NetworkInterface.GetIsNetworkAvailable();            
         }
 
         private void NetworkInformation_NetworkStatusChanged(object sender)
@@ -233,8 +234,6 @@ namespace ProjetoAthena
             App.ViewModel.Items.Clear();
         }
 
-        
-       
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
