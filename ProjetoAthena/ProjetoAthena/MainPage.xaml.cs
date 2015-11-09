@@ -130,25 +130,32 @@ namespace ProjetoAthena
 
         private void Senha_PasswordChanged(object sender, RoutedEventArgs e)
         {
+            bool ok = false;
+            Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
             if (Senha.Password.Length == 4)
-            {
-                //Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(1, 122, 122, 122));
+            {               
                 senhaaviso.Visibility = Visibility.Collapsed;
                 byte[] asciiBytes = Encoding.ASCII.GetBytes(Senha.Password);
                 foreach (byte i in asciiBytes)
                 {
+                    ok = false;
                     if (i < 48 || i > 57)
                     {
-                        //Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(1,255,0,0));
+                        Senha.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Red);                        
                         senhaaviso.Text = "Senha inválida";
                         senhaaviso.Visibility = Visibility.Visible;
                         break;
                     }
+                    ok = true;
+                }
+                if (ok)
+                {
+                    Senha.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Green);
                 }
             }
             else if (Senha.Password.Length < 4)
             {
-                //Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(1, 122, 122, 122));
+                Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
                 senhaaviso.Visibility = Visibility.Collapsed;
             }
         }
