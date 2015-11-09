@@ -61,7 +61,6 @@
             	<Run Text="Aplicativo Desenvolvido por Gabriel Oliveira. Adaptado por Mariana Dias e Matheus Solha "/>
                     </TextBlock>
                 </ScrollViewer>
-                <Button x:Name="voltar" Content="Voltar" Margin ="0,20,0,0" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" FontSize="20" RelativePanel.Below= "barra" RelativePanel.AlignLeftWith="barra" Click="voltar_Click"/>
             </RelativePanel>
         </ScrollViewer>
     </Grid>

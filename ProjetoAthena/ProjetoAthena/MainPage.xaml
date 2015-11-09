@@ -27,7 +27,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>        
         <RelativePanel>
-            <TextBlock x:Name="Athena"  HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Athena Renewer" FontSize="40"  VerticalAlignment="Top" Width="Auto" RelativePanel.RightOf="logolivro" RelativePanel.AlignTopWithPanel="True" Margin="40,5,0,0" />
+            <TextBlock x:Name="Athena"  HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Athena Renovador" FontSize="40"  VerticalAlignment="Top" Width="Auto" RelativePanel.RightOf="logolivro" RelativePanel.AlignTopWithPanel="True" Margin="40,5,0,0" />
             <TextBox x:Name="CPF" HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256" Margin="0,-80,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" MaxLength="11" TextChanged="CPF_TextChanged" BorderBrush="{StaticResource BrushBase}" />
             <PasswordBox Password="" x:Name="Senha" HorizontalAlignment="Left" Height="32" Margin="0,80,0,0"  VerticalAlignment="Top" Width="256" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" MaxLength="4" PasswordChanged="Senha_PasswordChanged"/>
             <TextBlock x:Name="textoCPF" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="CPF:" FontSize="25" VerticalAlignment="Top" Width="Auto" RelativePanel.Above="CPF" RelativePanel.AlignLeftWith="CPF" Margin="0,-112,0,0"/>

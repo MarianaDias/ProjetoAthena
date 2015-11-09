@@ -27,7 +27,7 @@
         </VisualStateManager.VisualStateGroups>
         <ScrollViewer >
             <RelativePanel ScrollViewer.VerticalScrollBarVisibility="Auto">
-                <TextBlock x:ConnectionId='1' x:Name="Athena"  HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Athena Renewer" FontSize="40"  VerticalAlignment="Top" Width="Auto" RelativePanel.RightOf="logolivro" RelativePanel.AlignTopWithPanel="True" Margin="40,5,0,0" />
+                <TextBlock x:ConnectionId='1' x:Name="Athena"  HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Athena Renovador" FontSize="40"  VerticalAlignment="Top" Width="Auto" RelativePanel.RightOf="logolivro" RelativePanel.AlignTopWithPanel="True" Margin="40,5,0,0" />
                 <Image x:ConnectionId='2' x:Name="logolivro" Visibility="Visible" Source="/Resources/Images/livros.jpg" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="60" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="20,5,0,0"/>
                 <ScrollViewer x:ConnectionId='3' x:Name="barralivros" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Below="Athena" Margin="0,50,0,0">
                     <Grid x:ConnectionId='5' x:Name="lista" Height="300" Width="300" ScrollViewer.VerticalScrollBarVisibility ="Auto"  Margin="0,0,17,0">

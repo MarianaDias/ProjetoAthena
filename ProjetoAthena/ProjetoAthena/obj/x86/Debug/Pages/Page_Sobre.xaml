@@ -26,7 +26,7 @@
                 <TextBlock x:ConnectionId='1' x:Name="sobre" Text="Sobre" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap"  VerticalAlignment="Top" Width="Auto" FontSize="40" RelativePanel.RightOf="logolivro" Margin="40,5,0,0"/>
                 <Image x:ConnectionId='2' x:Name="logolivro" Height="60" Width="60" Source="/Resources/Images/livros.jpg" Margin="20,5,0,0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
                 <ScrollViewer x:ConnectionId='3'  x:Name="barra" RelativePanel.Below="sobre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,20,0,0">
-                    <TextBlock x:ConnectionId='5' ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="textosobre" HorizontalAlignment="Left" Height="400" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"                                                FontSize="15" Margin="0,0,15,0">
+                    <TextBlock x:ConnectionId='4' ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="textosobre" HorizontalAlignment="Left" Height="400" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"                                                FontSize="15" Margin="0,0,15,0">
             	<Span>
             		<Run Text="Athena Renovador é um aplicativo utilizado como renovador de livros da biblioteca da UNESP, utilizando como base o sistema Athena."/>
             	</Span>
@@ -61,7 +61,6 @@
             	<Run Text="Aplicativo Desenvolvido por Gabriel Oliveira. Adaptado por Mariana Dias e Matheus Solha "/>
                     </TextBlock>
                 </ScrollViewer>
-                <Button x:ConnectionId='4' x:Name="voltar" Content="Voltar" Margin ="0,20,0,0" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" FontSize="20" RelativePanel.Below= "barra" RelativePanel.AlignLeftWith="barra"                     />
             </RelativePanel>
         </ScrollViewer>
     </Grid>
