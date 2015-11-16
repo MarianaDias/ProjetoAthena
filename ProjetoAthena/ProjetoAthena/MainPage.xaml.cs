@@ -59,18 +59,21 @@ namespace ProjetoAthena
             Senha.Password = "";
         }
 
-        private void logar_Click(object sender, RoutedEventArgs e)
+        private async void logar_Click(object sender, RoutedEventArgs e)
         {
+
             if (App.NetWorkAvailable)
             {
+                lembrar_Click(logar, e);
                 App.DataConexao.RetornarLivros(Loga);
                 App.DataConexao.Usuario = CPF.Text;
                 App.DataConexao.Senha = Senha.Password;
             }
             else if (!App.NetWorkAvailable)
             {
-                textoaviso.Text = "Sem Conexão";
-                textoaviso.Visibility = Visibility.Visible;
+                var connection = new MessageDialog("Sem Conexão!");
+                await connection.ShowAsync();
+              
             }
         }
 

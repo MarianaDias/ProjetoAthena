@@ -276,7 +276,7 @@ namespace ProjetoAthena
                 // parameter
 
                 // Faz login automático caso 
-                if(Usuario != "" && Senha != "")
+                if(Usuario != "" && Senha != "" && App.NetWorkAvailable)
                 {
                     App.DataConexao.Usuario = Usuario;
                     App.DataConexao.Senha = Senha;
