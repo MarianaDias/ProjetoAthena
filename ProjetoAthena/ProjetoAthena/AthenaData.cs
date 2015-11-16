@@ -166,14 +166,7 @@ namespace ProjetoAthena
            
             try
             {
-                /*if (dadosIncorretos)
-                {
-                    var dialog = new MessageDialog("logar usuario 15 MINUTOS!");
-                    await dialog.ShowAsync();
-                    callback(null);
-                }
-                else
-                {*/
+              
                     callbackLogin = callback;
                     webRequest = WebRequest.Create(SiteAthena);
                     webRequest.Headers["Connection"] = "Keep-Alive";                
