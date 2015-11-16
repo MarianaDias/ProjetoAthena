@@ -6,7 +6,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DoNotLaunchApp>false</DoNotLaunchApp>
     <UseSimulator>false</UseSimulator>
-    <UseEmulator>false</UseEmulator>
+    <UseEmulator>true</UseEmulator>
     <DeviceId>8BDF218D-FDBB-4A97-90F9-3AA33B559A92</DeviceId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">

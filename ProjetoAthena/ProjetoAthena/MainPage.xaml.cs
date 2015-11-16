@@ -42,13 +42,18 @@ namespace ProjetoAthena
 
                 var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
-                    textoaviso.Text = "CPF ou Senha Incorreto";
-                    textoaviso.Visibility = Visibility.Visible;
-                });
+                    ShowPopUp();
+                }); 
             }
         }
 
-        private void sobre_Click(object sender, RoutedEventArgs e)
+          private async void ShowPopUp()
+          {
+                    var dialog = new MessageDialog("CPF OU SENHA INCORRETOS");
+                    await dialog.ShowAsync();
+          }
+
+    private void sobre_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Pages.Page_Sobre));
         }
@@ -104,13 +109,13 @@ namespace ProjetoAthena
             }
         }
 
-        private void CPF_TextChanged(object sender, TextChangedEventArgs e)
+        private async void  CPF_TextChanged(object sender, TextChangedEventArgs e)
         {
             bool ok = false;
             CPF.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
             if (CPF.Text.Length == 11)
             {
-                textoaviso.Visibility = Visibility.Collapsed;
+                
                 byte[] asciiBytes = Encoding.ASCII.GetBytes(CPF.Text);
                 foreach (byte i in asciiBytes)
                 {
@@ -118,8 +123,8 @@ namespace ProjetoAthena
                     if (i < 48 || i > 57)
                     {
                         CPF.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Red);
-                        textoaviso.Text = "CPF inválido";
-                        textoaviso.Visibility = Visibility.Visible;
+                        var dialog = new MessageDialog("CPF Invalido");
+                        await dialog.ShowAsync();
                         break;
                     }
                     ok = true;
@@ -132,17 +137,17 @@ namespace ProjetoAthena
             else if (CPF.Text.Length < 11)
             {
                 CPF.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
-                textoaviso.Visibility = Visibility.Collapsed;
+               
             }
         }
 
-        private void Senha_PasswordChanged(object sender, RoutedEventArgs e)
+        private async void Senha_PasswordChanged(object sender, RoutedEventArgs e)
         {
             bool ok = false;
             Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
             if (Senha.Password.Length == 4)
             {
-                senhaaviso.Visibility = Visibility.Collapsed;
+                
                 byte[] asciiBytes = Encoding.ASCII.GetBytes(Senha.Password);
                 foreach (byte i in asciiBytes)
                 {
@@ -150,8 +155,8 @@ namespace ProjetoAthena
                     if (i < 48 || i > 57)
                     {
                         Senha.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Red);
-                        senhaaviso.Text = "Senha inválida";
-                        senhaaviso.Visibility = Visibility.Visible;
+                        var dialog = new MessageDialog("Senha Invalida");
+                        await dialog.ShowAsync();
                         break;
                     }
                     ok = true;
@@ -164,7 +169,7 @@ namespace ProjetoAthena
             else if (Senha.Password.Length < 4)
             {
                 Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
-                senhaaviso.Visibility = Visibility.Collapsed;
+                
             }
         }
 

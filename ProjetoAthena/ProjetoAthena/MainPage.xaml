@@ -36,8 +36,6 @@
             <Button x:Name="logar" Content="Login" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignRightWith="Senha" RelativePanel.Below="lembrar" FontSize="20" Click="logar_Click"/>
             <Button x:Name="limpar" Content="Limpar" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" RelativePanel.AlignLeftWith="Senha" RelativePanel.Below="lembrar" FontSize="20" Click="limpar_Click"/>
             <Image x:Name="logolivro" Visibility="Visible" Source="/Resources/Images/livros.jpg" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="60" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="20,5,0,0"/>
-            <TextBlock x:Name="textoaviso" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Aviso" VerticalAlignment="Top" Width="Auto" Visibility="Collapsed" RelativePanel.Below="CPF" RelativePanel.AlignLeftWith="CPF" Margin="0,-50,0,0 " FontStyle="Oblique" Foreground="Red"/>
-            <TextBlock x:Name="senhaaviso" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Aviso" VerticalAlignment="Top" Width="Auto" Visibility="Collapsed" RelativePanel.Below="Senha" RelativePanel.AlignRightWith="Senha" Margin="0,0,0,0 " FontStyle="Oblique" Foreground="Red"/>
         </RelativePanel>        
     </Grid>    
 </Page>
