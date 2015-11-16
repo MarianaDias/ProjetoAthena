@@ -24,7 +24,7 @@ namespace ProjetoAthena
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
-    {        
+    {
         public MainPage()
         {
             this.InitializeComponent();
@@ -39,14 +39,15 @@ namespace ProjetoAthena
             }
             else if (App.DataConexao.DadosIncorretos)
             {
-                
-                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal,  () => {
+
+                var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
                     textoaviso.Text = "CPF ou Senha Incorreto";
                     textoaviso.Visibility = Visibility.Visible;
                 });
             }
-        }        
-          
+        }
+
         private void sobre_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Pages.Page_Sobre));
@@ -55,10 +56,10 @@ namespace ProjetoAthena
         private void limpar_Click(object sender, RoutedEventArgs e)
         {
             CPF.Text = "";
-            Senha.Password = "";            
+            Senha.Password = "";
         }
 
-        private  void logar_Click(object sender, RoutedEventArgs e)
+        private void logar_Click(object sender, RoutedEventArgs e)
         {
             if (App.NetWorkAvailable)
             {
@@ -66,11 +67,11 @@ namespace ProjetoAthena
                 App.DataConexao.Usuario = CPF.Text;
                 App.DataConexao.Senha = Senha.Password;
             }
-            else if(!App.NetWorkAvailable)
+            else if (!App.NetWorkAvailable)
             {
                 textoaviso.Text = "Sem Conexão";
                 textoaviso.Visibility = Visibility.Visible;
-            }            
+            }
         }
 
         private void lembrar_Click(object sender, RoutedEventArgs e)
@@ -82,20 +83,22 @@ namespace ProjetoAthena
                 App.DataConexao.Senha = Senha.Password;
                 App.Usuario = CPF.Text;
                 App.Senha = Senha.Password;
-            }else{
+            }
+            else
+            {
                 App.Check = false;
                 App.Uncheck();
-            }            
+            }
         }
-       protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if(App.Usuario != "" && App.Senha != "")
+            if (App.Usuario != "" && App.Senha != "")
             {
                 CPF.Text = App.Usuario;
                 Senha.Password = App.Senha;
                 lembrar.IsChecked = true;
-            }            
+            }
         }
 
         private void CPF_TextChanged(object sender, TextChangedEventArgs e)
@@ -103,7 +106,7 @@ namespace ProjetoAthena
             bool ok = false;
             CPF.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
             if (CPF.Text.Length == 11)
-            {                
+            {
                 textoaviso.Visibility = Visibility.Collapsed;
                 byte[] asciiBytes = Encoding.ASCII.GetBytes(CPF.Text);
                 foreach (byte i in asciiBytes)
@@ -122,7 +125,8 @@ namespace ProjetoAthena
                 {
                     CPF.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Green);
                 }
-            } else if (CPF.Text.Length < 11)
+            }
+            else if (CPF.Text.Length < 11)
             {
                 CPF.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
                 textoaviso.Visibility = Visibility.Collapsed;
@@ -134,7 +138,7 @@ namespace ProjetoAthena
             bool ok = false;
             Senha.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 122, 122, 122));
             if (Senha.Password.Length == 4)
-            {               
+            {
                 senhaaviso.Visibility = Visibility.Collapsed;
                 byte[] asciiBytes = Encoding.ASCII.GetBytes(Senha.Password);
                 foreach (byte i in asciiBytes)
@@ -142,7 +146,7 @@ namespace ProjetoAthena
                     ok = false;
                     if (i < 48 || i > 57)
                     {
-                        Senha.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Red);                        
+                        Senha.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Red);
                         senhaaviso.Text = "Senha inválida";
                         senhaaviso.Visibility = Visibility.Visible;
                         break;
@@ -166,17 +170,6 @@ namespace ProjetoAthena
             this.Frame.Navigate(typeof(Pages.Page_Sobre));
         }
 
-        private void Page_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
-        {
-            if (LayoutRoot.Visibility == Visibility.Collapsed)
-            {
-                LayoutRoot.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                LayoutRoot.Visibility = Visibility.Collapsed;
-            }
-            
-        }
-    }
+
+    } 
 }
