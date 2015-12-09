@@ -17,6 +17,8 @@
                     <VisualState.Setters>
                         <Setter Target="textosobre.Width" Value="500"/>
                         <Setter Target="textosobre.FontSize" Value="17"/>
+                        <Setter Target="textoequipe.Width" Value="500"/>
+                        <Setter Target="textoequipe.FontSize" Value="17"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -26,41 +28,19 @@
                 <TextBlock x:Name="sobre" Text="Sobre" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap"  VerticalAlignment="Top" Width="Auto" FontSize="40" RelativePanel.RightOf="logolivro" Margin="40,5,0,0"/>
                 <Image x:Name="logolivro" Height="60" Width="60" Source="/Resources/Images/livros.jpg" Margin="20,5,0,0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
                 <ScrollViewer  x:Name="barra" RelativePanel.Below="sobre" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,20,0,0">
-                    <TextBlock ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="textosobre" HorizontalAlignment="Left" Height="400" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" SelectionChanged="textosobre_SelectionChanged" FontSize="15" Margin="0,0,15,0">
+                    <TextBlock ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="textosobre" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" SelectionChanged="textosobre_SelectionChanged" FontSize="15" Margin="0,0,15,0">
             	<Span>
             		<Run Text="Athena Renovador é um aplicativo utilizado como renovador de livros da biblioteca da UNESP, utilizando como base o sistema Athena."/>
             	</Span>
             	<LineBreak/>                        
             	<Span>
             		<Run Text="Este é um aplicativo não oficial que utiliza todos os dados do sistema Athena, o qual é de propriedade da Universidade Estadual Paulista Júlio de Mesquita Filho - UNESP. O desenvolvedor não é responsável por seu conteúdo."/>
-            	</Span>
-                  <Span>
-            		<Run Text=""/>
-            	</Span>
-            	<LineBreak/> 
-                 <Span>
-            		<Run Text=""/>
-            	</Span>
-            	<LineBreak/>  
-                 <Span>
-            		<Run Text=""/>
-            	</Span>
-            	<LineBreak/>  
-                	<LineBreak/>  
-                 <Span>
-            		<Run Text=""/>
-            	</Span>
-            	<LineBreak/> 
-                 	<LineBreak/>  
-                 <Span>
-            		<Run Text=""/>
-            	</Span>
-            	<LineBreak/> 
-                        
-            	<LineBreak/>
-            	<Run Text="Aplicativo Desenvolvido por Gabriel Oliveira. Adaptado por Mariana Dias e Matheus Solha "/>
-                    </TextBlock>
+            	</Span>                 
+                </TextBlock>          
                 </ScrollViewer>
+                <Image x:Name="logoLTIA" Visibility="Visible" Source="/Resources/Images/logoLTIA.png" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="70" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWith="barra" RelativePanel.Below="barra"  Margin="0,100,0,0"/>
+                <TextBlock x:Name="textoequipe" Text="Equipe de Desenvolvimento: Coordenadores: Gabriel Oliveira e Karoline Setoue Desenvolvedores: Mariana Dias e Matheus Solha" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontSize="15" RelativePanel.RightOf="logoLTIA" RelativePanel.AlignVerticalCenterWith="logoLTIA" Margin="0,100,0,0"/>
+                
             </RelativePanel>
         </ScrollViewer>
     </Grid>

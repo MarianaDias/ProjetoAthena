@@ -95,6 +95,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\livros.jpg" />
+    <Content Include="Resources\Images\logoLTIA.png" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

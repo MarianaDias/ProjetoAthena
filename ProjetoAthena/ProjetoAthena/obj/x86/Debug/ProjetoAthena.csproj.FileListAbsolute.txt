@@ -1807,3 +1807,5 @@ C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug
 C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Athena Renovador.pdb
 C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Athena Renovador.xr.xml
 C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\entrypoint\Athena Renovador.exe
+C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Resources\Images\logoLTIA.png
+C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\obj\x86\Debug\Core\Resources\Images\logoLTIA.png

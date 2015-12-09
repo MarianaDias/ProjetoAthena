@@ -73,6 +73,8 @@
       <RootMethod Name="SetAlignLeftWithPanel" />
       <RootMethod Name="GetAlignRightWithPanel" />
       <RootMethod Name="SetAlignRightWithPanel" />
+      <RootMethod Name="GetAlignVerticalCenterWith" />
+      <RootMethod Name="SetAlignVerticalCenterWith" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="HorizontalAlignment" />

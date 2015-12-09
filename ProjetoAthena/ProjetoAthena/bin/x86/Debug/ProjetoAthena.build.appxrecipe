@@ -99,6 +99,9 @@
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Resources\Images\livros.jpg">
       <PackagePath>Resources\Images\livros.jpg</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\Resources\Images\logoLTIA.png">
+      <PackagePath>Resources\Images\logoLTIA.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maria\Documents\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
     </AppxPackagedFile>
