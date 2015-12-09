@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -49,6 +50,9 @@ namespace ProjetoAthena.Pages
 
         }
 
-       
+        private async void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            var launcher = await Launcher.LaunchUriAsync(new Uri("http://www.ltia.fc.unesp.br/"));
+        }
     }
 }
