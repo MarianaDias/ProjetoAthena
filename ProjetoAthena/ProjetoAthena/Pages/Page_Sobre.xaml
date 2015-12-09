@@ -38,9 +38,8 @@
             	</Span>                 
                 </TextBlock>          
                 </ScrollViewer>
-                <Image x:Name="logoLTIA" Visibility="Visible" Source="/Resources/Images/logoLTIA.png" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="70" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWith="barra" RelativePanel.Below="barra"  Margin="0,100,0,0"/>
-                <TextBlock x:Name="textoequipe" Text="Equipe de Desenvolvimento: Coordenadores: Gabriel Oliveira e Karoline Setoue Desenvolvedores: Mariana Dias e Matheus Solha" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontSize="15" RelativePanel.RightOf="logoLTIA" RelativePanel.AlignVerticalCenterWith="logoLTIA" Margin="0,100,0,0"/>
-                
+                <Image x:Name="logoLTIA" Visibility="Visible" Source="/Resources/Images/logoLTIA.png" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWith="barra" RelativePanel.Below="barra"  Margin="0,100,0,0"/>
+               <TextBlock x:Name="textoequipe" Text="Equipe de Desenvolvimento: Coordenadores: Gabriel Oliveira e Karoline Setoue Desenvolvedores: Mariana Dias e Matheus Solha" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" FontSize="15" RelativePanel.RightOf="logoLTIA" RelativePanel.AlignVerticalCenterWith="logoLTIA" Margin="0,100,0,0"/> 
             </RelativePanel>
         </ScrollViewer>
     </Grid>

@@ -25,8 +25,8 @@ namespace ProjetoAthena.Pages
     public sealed partial class Page_Livros : Page
     {
         private const int erroConexao = 0,
-                            erroAcessoSite = 1,
-                            erroSemLivros = 2;
+                          erroAcessoSite = 1,
+                          erroSemLivros = 2;
         public Page_Livros()
         {
             this.InitializeComponent();
@@ -75,36 +75,47 @@ namespace ProjetoAthena.Pages
             {
                 App.DataConexao.RetornarLivros((IAsyncResult resultado) =>
                 {
-                    int number = 0;
-                    foreach (ItemViewModel item in App.ViewModel.Items)
+                    if (App.ViewModel.Items.Count <= 0)
                     {
-                        int totalDias = (item.DataDevolucao - DateTime.Now).Days;
-                        switch (number)
+                        var ignored = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                         {
-                            case 0:
-                                livro1.Text = item.Titulo;
-                                datadev1.Text = item.StringDevolucao;
-                                temporest1.Text = "Devolver em " + totalDias + " dias";
-                                break;
-                            case 1:
-                                livro2.Text = item.Titulo;
-                                datadev2.Text = item.StringDevolucao;
-                                temporest2.Text = "Devolver em " + totalDias + " dias";
-                                break;
-                            case 2:
-                                livro3.Text = item.Titulo;
-                                datadev3.Text = item.StringDevolucao;
-                                temporest3.Text = "Devolver em " + totalDias + " dias";
-                                break;
-                            case 3:
-                                livro4.Text = item.Titulo;
-                                datadev4.Text = item.StringDevolucao;
-                                temporest4.Text = "Devolver em " + totalDias + " dias";
-                                break;
-                            default:
-                                break;
+                            livro1.Text = "Não há livros Emprestados";
+                        });
+                        
+                    }
+                    else
+                    {
+                        int number = 0;
+                        foreach (ItemViewModel item in App.ViewModel.Items)
+                        {
+                            int totalDias = (item.DataDevolucao - DateTime.Now).Days;
+                            switch (number)
+                            {
+                                case 0:
+                                    livro1.Text = item.Titulo;
+                                    datadev1.Text = item.StringDevolucao;
+                                    temporest1.Text = "Devolver em " + totalDias + " dias";
+                                    break;
+                                case 1:
+                                    livro2.Text = item.Titulo;
+                                    datadev2.Text = item.StringDevolucao;
+                                    temporest2.Text = "Devolver em " + totalDias + " dias";
+                                    break;
+                                case 2:
+                                    livro3.Text = item.Titulo;
+                                    datadev3.Text = item.StringDevolucao;
+                                    temporest3.Text = "Devolver em " + totalDias + " dias";
+                                    break;
+                                case 3:
+                                    livro4.Text = item.Titulo;
+                                    datadev4.Text = item.StringDevolucao;
+                                    temporest4.Text = "Devolver em " + totalDias + " dias";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            number++;
                         }
-                        number++;
                     }
                 });
             }            
@@ -153,7 +164,8 @@ namespace ProjetoAthena.Pages
         }
 
         void MostraLivros()
-        {            
+        {   
+                  
             int number = 0;
             foreach (ItemViewModel item in App.ViewModel.Items)
             {

@@ -66,6 +66,7 @@ namespace ProjetoAthena
 
         private async void logar_Click(object sender, RoutedEventArgs e)
         {
+           
 
             if (App.NetWorkAvailable)
             {
@@ -78,7 +79,6 @@ namespace ProjetoAthena
             {
                 var connection = new MessageDialog("Sem Conexão!");
                 await connection.ShowAsync();
-              
             }
         }
 

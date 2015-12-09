@@ -29,20 +29,26 @@ namespace ProjetoAthena.Pages
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
-
-        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        Type lastpage;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            base.OnNavigatedTo(e);
+            lastpage = Frame.BackStack.Last().SourcePageType;
         }
+
+            private void OnBackRequested(object sender, BackRequestedEventArgs e)
+            {
+                if ( lastpage == typeof(MainPage))
+                    this.Frame.Navigate(typeof(MainPage));
+                else if (lastpage == typeof(Pages.Page_Livros))
+                    this.Frame.Navigate(typeof(Pages.Page_Livros));
+            }
 
         private void textosobre_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void voltar_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(MainPage));
-        }
+       
     }
 }
