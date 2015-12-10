@@ -54,5 +54,10 @@ namespace ProjetoAthena.Pages
         {
             var launcher = await Launcher.LaunchUriAsync(new Uri("http://www.ltia.fc.unesp.br/"));
         }
+
+        private void textoequipe_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
