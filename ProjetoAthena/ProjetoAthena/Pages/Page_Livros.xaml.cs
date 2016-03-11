@@ -111,16 +111,6 @@ namespace ProjetoAthena.Pages
                                     datadev4.Text = item.StringDevolucao;
                                     temporest4.Text = "Devolver em " + totalDias + " dias";
                                     break;
-                                case 4:
-                                    livro5.Text = item.Titulo;
-                                    datadev5.Text = item.StringDevolucao;
-                                    temporest5.Text = "Devolver em " + totalDias + " dias";
-                                    break;
-                                case 5:
-                                    livro6.Text = item.Titulo;
-                                    datadev6.Text = item.StringDevolucao;
-                                    temporest6.Text = "Devolver em " + totalDias + " dias";
-                                    break;
                                 default:
                                     break;
                             }
@@ -144,20 +134,14 @@ namespace ProjetoAthena.Pages
             livro2.Text = "";
             livro3.Text = "";
             livro4.Text = "";
-            livro5.Text = "";
-            livro6.Text = "";
             datadev1.Text = "";
             datadev2.Text = "";
             datadev3.Text = "";
             datadev4.Text = "";
-            datadev5.Text = "";
-            datadev6.Text = "";
             temporest1.Text = "";
             temporest2.Text = "";
             temporest3.Text = "";
             temporest4.Text = "";
-            temporest5.Text = "";
-            temporest6.Text = "";
         }
 
         private void renovar_Click(object sender, RoutedEventArgs e)
@@ -206,16 +190,6 @@ namespace ProjetoAthena.Pages
                         livro4.Text = item.Titulo;
                         datadev4.Text = item.StringDevolucao;
                         temporest4.Text = item.Status;
-                        break;
-                    case 4:
-                        livro5.Text = item.Titulo;
-                        datadev5.Text = item.StringDevolucao;
-                        temporest5.Text = item.Status;
-                        break;
-                    case 5:
-                        livro6.Text = item.Titulo;
-                        datadev6.Text = item.StringDevolucao;
-                        temporest6.Text = item.Status;
                         break;
                     default:
                         break;

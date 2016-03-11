@@ -280,7 +280,7 @@ namespace ProjetoAthena
 
         private void RetornarLivrosCarregarCallback(IAsyncResult resultado)
         {
-            string[] titulos = new string[6];
+            string[] titulos = new string[4];
             webRequest = resultado.AsyncState as WebRequest;
             if (webRequest != null)
             {
