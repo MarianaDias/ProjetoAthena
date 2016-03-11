@@ -18,10 +18,10 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="600"/>
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="barralivros.Width" Value="550" />
+                    <VisualState.Setters>                        
+                        <Setter Target="lista.Width" Value="500" />
+                        <Setter Target="lista.Height" Value="500"/>
                         <Setter Target="barralivros.Height" Value="500"/>
-                        <Setter Target="lista.Width" Value="500"/>
                         <Setter Target="livro1.FontSize" Value="25"/>
                         <Setter Target="livro2.FontSize" Value="25"/>
                         <Setter Target="livro3.FontSize" Value="25"/>
@@ -36,45 +36,45 @@
             <RelativePanel ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <TextBlock x:ConnectionId='3' x:Name="Athena"  HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" Text="Athena Renovador" FontSize="40"  VerticalAlignment="Top" Width="Auto" RelativePanel.RightOf="logolivro" RelativePanel.AlignTopWithPanel="True" Margin="40,5,0,0" />
                 <Image x:ConnectionId='4' x:Name="logolivro" Visibility="Visible" Source="/Resources/Images/livros.jpg" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="60" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="20,5,0,0"/>
-                <ScrollViewer x:ConnectionId='5' x:Name="barralivros" Height="300" ScrollViewer.VerticalScrollBarVisibility ="Visible" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Below="Athena" Margin="0,50,0,0" ScrollViewer.VerticalScrollMode="Auto">
-                    <Grid x:ConnectionId='7' x:Name="lista"  Height="450" Width="300"  Margin="0,0,17,0">
+                <ScrollViewer x:ConnectionId='5' x:Name="barralivros" Height="300"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Below="Athena" Margin="0,50,0,0">
+                    <Grid x:ConnectionId='7' x:Name="lista" Height="450" Width="300" ScrollViewer.VerticalScrollBarVisibility ="Auto"  Margin="0,0,17,0">
                         <Grid.RowDefinitions>
-                            <RowDefinition x:ConnectionId='8' x:Name="linha1"/>
-                            <RowDefinition x:ConnectionId='9' x:Name="linha2"/>
-                            <RowDefinition x:ConnectionId='10' x:Name="linha3"/>
-                            <RowDefinition x:ConnectionId='11' x:Name="linha4"/>
-                            <RowDefinition x:ConnectionId='12' x:Name="linha5"/>
-                            <RowDefinition x:ConnectionId='13' x:Name="linha6"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <RelativePanel Grid.Row="0" Height="Auto" Width="Auto">
-                            <TextBlock x:ConnectionId='29' x:Name="livro1" Text="Livro 1 - Alugado Unesp Blabla" TextWrapping="Wrap" Height="Auto" FontSize="18" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                            <TextBlock x:ConnectionId='30' x:Name="datadev1" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
-                            <TextBlock x:ConnectionId='31' x:Name="temporest1" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                            <TextBlock x:ConnectionId='23' x:Name="livro1" Text="Livro 1 - Alugado Unesp Blabla" TextWrapping="Wrap" Height="Auto" FontSize="18" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                            <TextBlock x:ConnectionId='24' x:Name="datadev1" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                            <TextBlock x:ConnectionId='25' x:Name="temporest1" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
                         </RelativePanel>
                         <RelativePanel Grid.Row="1" Height="Auto" Width="Auto">
-                            <TextBlock x:ConnectionId='26' x:Name="livro2" Text="Livro 2 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                            <TextBlock x:ConnectionId='27' x:Name="datadev2" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
-                            <TextBlock x:ConnectionId='28' x:Name="temporest2" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                            <TextBlock x:ConnectionId='20' x:Name="livro2" Text="Livro 2 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                            <TextBlock x:ConnectionId='21' x:Name="datadev2" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                            <TextBlock x:ConnectionId='22' x:Name="temporest2" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
                         </RelativePanel>
                         <RelativePanel Grid.Row="2" Height="Auto" Width="Auto">
-                            <TextBlock x:ConnectionId='23' x:Name="livro3" Text="Livro 3 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="2" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                            <TextBlock x:ConnectionId='24' x:Name="datadev3" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
-                            <TextBlock x:ConnectionId='25' x:Name="temporest3" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                            <TextBlock x:ConnectionId='17' x:Name="livro3" Text="Livro 3 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="2" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                            <TextBlock x:ConnectionId='18' x:Name="datadev3" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                            <TextBlock x:ConnectionId='19' x:Name="temporest3" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
                         </RelativePanel>
-                        <RelativePanel Grid.Row="3" Height="Auto" Width="Auto">                            
-                                <TextBlock x:ConnectionId='20' x:Name="livro4" Text="Livro 4 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="3" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                                <TextBlock x:ConnectionId='21' x:Name="datadev4" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
-                                <TextBlock x:ConnectionId='22' x:Name="temporest4" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                        <RelativePanel Grid.Row="3" Height="Auto" Width="Auto">
+                            <TextBlock x:ConnectionId='14' x:Name="livro4" Text="Livro 4 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="3" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                            <TextBlock x:ConnectionId='15' x:Name="datadev4" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                            <TextBlock x:ConnectionId='16' x:Name="temporest4" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
                         </RelativePanel>
                         <RelativePanel Grid.Row="4" Height="Auto" Width="Auto">
-                            <TextBlock x:ConnectionId='17' x:Name="livro5" Text="Livro 5 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="4" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                            <TextBlock x:ConnectionId='18' x:Name="datadev5" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
-                            <TextBlock x:ConnectionId='19' x:Name="temporest5" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                            <TextBlock x:ConnectionId='11' x:Name="livro5" Text="Livro 5 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="4" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                            <TextBlock x:ConnectionId='12' x:Name="datadev5" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                            <TextBlock x:ConnectionId='13' x:Name="temporest5" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
                         </RelativePanel>
                         <RelativePanel Grid.Row="5" Height="Auto" Width="Auto">
-                            <TextBlock x:ConnectionId='14' x:Name="livro6" Text="Livro 6 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                            <TextBlock x:ConnectionId='15' x:Name="datadev6" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
-                            <TextBlock x:ConnectionId='16' x:Name="temporest6" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                            <TextBlock x:ConnectionId='8' x:Name="livro6" Text="Livro 6 - Alugado Unesp Blablabla" TextWrapping="Wrap" Height="Auto" FontSize="18" Grid.Row="5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                            <TextBlock x:ConnectionId='9' x:Name="datadev6" Text="Data devolução:28/08/2018" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                            <TextBlock x:ConnectionId='10' x:Name="temporest6" Text="7 dias restantes" FontSize="15" Height="Auto" Width="Auto" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
                         </RelativePanel>
                     </Grid>
                 </ScrollViewer>

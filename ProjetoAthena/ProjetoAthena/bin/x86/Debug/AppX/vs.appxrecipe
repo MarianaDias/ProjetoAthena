@@ -9,7 +9,7 @@
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>a85231be-e7a2-45e4-8d6f-2b5b9bab0038</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\obj\x86\Debug\</IntermediateOutputPath>
     <RegisteredManifestChecksum>9EB477EB0311C97278570E2587FD786B970C8F671B20BED8178FD325D73C2831</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>a85231be-e7a2-45e4-8d6f-2b5b9bab0038_1.0.0.0_x86__jkbaqktgv6p7a</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>a85231be-e7a2-45e4-8d6f-2b5b9bab0038_jkbaqktgv6p7a!App</RegisteredUserModeAppID>
@@ -19,16 +19,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-03-11T12:41:57.496</Modified>
+      <Modified>2016-03-11T14:17:04.360</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\ProjetoAthena.exe">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\ProjetoAthena.exe">
       <PackagePath>entrypoint\ProjetoAthena.exe</PackagePath>
-      <Modified>2016-03-11T12:41:56.033</Modified>
+      <Modified>2016-03-11T14:17:01.839</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -454,75 +454,75 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-02-15T03:00:53.881</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\HtmlAgilityPack.bin\HtmlAgilityPack.dll">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\HtmlAgilityPack.bin\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
-      <Modified>2016-03-11T05:07:26.939</Modified>
+      <Modified>2016-03-11T13:54:19.596</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\ApplicationInsights.config">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
-      <Modified>2016-03-11T05:07:27.152</Modified>
+      <Modified>2016-03-11T13:54:19.753</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Resources\Images\livros.jpg">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Resources\Images\livros.jpg">
       <PackagePath>Resources\Images\livros.jpg</PackagePath>
-      <Modified>2016-03-11T05:07:27.580</Modified>
+      <Modified>2016-03-11T13:54:20.301</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Resources\Images\logoLTIA.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Resources\Images\logoLTIA.png">
       <PackagePath>Resources\Images\logoLTIA.png</PackagePath>
-      <Modified>2016-03-11T05:07:27.587</Modified>
+      <Modified>2016-03-11T13:54:20.307</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2016-03-11T05:07:27.157</Modified>
+      <Modified>2016-03-11T13:54:19.759</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-03-11T05:07:27.160</Modified>
+      <Modified>2016-03-11T13:54:19.762</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-03-11T05:07:27.163</Modified>
+      <Modified>2016-03-11T13:54:19.772</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-03-11T05:07:27.170</Modified>
+      <Modified>2016-03-11T13:54:19.775</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-03-11T05:07:27.173</Modified>
+      <Modified>2016-03-11T13:54:19.777</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-03-11T05:07:27.177</Modified>
+      <Modified>2016-03-11T13:54:19.779</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-03-11T05:07:27.180</Modified>
+      <Modified>2016-03-11T13:54:19.786</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2016-03-11T05:07:27.569</Modified>
+      <Modified>2016-03-11T13:54:20.269</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\ProjetoAthena.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\ProjetoAthena.xr.xml">
       <PackagePath>ProjetoAthena.xr.xml</PackagePath>
-      <Modified>2016-03-11T12:41:55.440</Modified>
+      <Modified>2016-03-11T14:09:16.180</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2016-01-29T07:40:34.107</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-03-11T12:41:57.084</Modified>
+      <Modified>2016-03-11T14:17:03.697</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.exe">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.exe">
       <PackagePath>ProjetoAthena.exe</PackagePath>
-      <Modified>2016-03-11T12:41:57.489</Modified>
+      <Modified>2016-03-11T14:17:04.344</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -9,16 +9,16 @@
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>a85231be-e7a2-45e4-8d6f-2b5b9bab0038</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\obj\x86\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\ProjetoAthena.exe">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\ProjetoAthena.exe">
       <PackagePath>entrypoint\ProjetoAthena.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Matheus\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
@@ -339,58 +339,58 @@
     <AppxPackagedFile Include="C:\Users\Matheus\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\HtmlAgilityPack.bin\HtmlAgilityPack.dll">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\HtmlAgilityPack.bin\HtmlAgilityPack.dll">
       <PackagePath>HtmlAgilityPack.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\ApplicationInsights.config">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Resources\Images\livros.jpg">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Resources\Images\livros.jpg">
       <PackagePath>Resources\Images\livros.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Resources\Images\logoLTIA.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Resources\Images\logoLTIA.png">
       <PackagePath>Resources\Images\logoLTIA.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\ProjetoAthena.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\ProjetoAthena.xr.xml">
       <PackagePath>ProjetoAthena.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.exe">
+    <AppxPackagedFile Include="C:\Users\Matheus\Documents\Biblio\asjdiojasio\ProjetoAthena\ProjetoAthena\ProjetoAthena\bin\x86\Debug\Core\ProjetoAthena.exe">
       <PackagePath>ProjetoAthena.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
